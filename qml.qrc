@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>LoginPage.qml</file>
+        <file>CustomerDetails.qml</file>
+        <file>PasswdModify.qml</file>
+        <file>ActiveInfoDetails.qml</file>
+        <file>ActiveInfoSuccess.qml</file>
+        <file>SeeActiveInfo.qml</file>
+        <file>WaitActive.qml</file>
+        <file>WaitActiveInfo.qml</file>
+    </qresource>
+</RCC>
