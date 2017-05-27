@@ -1,4 +1,4 @@
-import QtQuick 2.2
+﻿import QtQuick 2.2
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.1
 
 Window {
     id: wnd_user_info
-    visible: true
+    visible: login.b_auto_login
 
     property int n_width: 320
     property int n_height: 580

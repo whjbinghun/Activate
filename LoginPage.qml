@@ -1,4 +1,4 @@
-import QtQuick 2.4
+﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
@@ -15,9 +15,17 @@ Window {
     width: n_width
     height: n_height
 
-    visible: false
+    visible: !login.b_auto_login
     modality: Qt.ApplicationModal
     //flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
+
+    Connections {
+        target: login
+
+        onSig_warning: {
+            lab_warning.text = str_warning;
+        }
+    }
 
     Column {
         Rectangle {
@@ -68,6 +76,7 @@ Window {
                 }
 
                 TextField {
+                    id: text_account
                     width: 245
                     height: 40
                     placeholderText: qsTr("邮箱/账号/手机号" )
@@ -86,6 +95,7 @@ Window {
                 }
 
                 TextField {
+                    id: text_passwd
                     width: 245
                     height: 40
                     placeholderText: qsTr( "请输入密码" )
@@ -112,6 +122,15 @@ Window {
                 }
             }
 
+            Label {
+                id: lab_warning
+                width: parent.width
+                height: 35
+
+                text: ""
+
+            }
+
             Button {
                 anchors.left: parent.left
                 width: parent.width
@@ -119,11 +138,30 @@ Window {
                 text: "登录"
                 style: ButtonStyle {
                     background: Rectangle {
+                        radius: 8
                         gradient: Gradient {    //颜色渐变
                             GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
                             GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
                         }
                     }
+                }
+
+                onClicked: {
+                    lab_warning.text = ""
+
+                    var str_account = text_account.text;
+                    var str_passwd = text_passwd.text;
+                    if( str_account.length == 0 ) {
+                        lab_warning.text = "账号不能为空！"
+                        return;
+                    }
+
+                    if( str_passwd.length == 0 ) {
+                        lab_warning.text = "账号不能为空！"
+                        return;
+                    }
+
+                    login.send_account( str_account, str_passwd );
                 }
             }
         }
