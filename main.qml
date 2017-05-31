@@ -7,6 +7,7 @@ import QtQuick.Layouts 1.1
 
 Window {
     id: wnd_user_info
+    title: qsTr( "软件激活平台" )
     visible: false
 
     property int n_width: 320
@@ -44,8 +45,6 @@ Window {
         visible: false
     }
 
-    //测试界面显示
-
     PasswdModify {
         id: passwd_modify
         visible: false
@@ -64,6 +63,16 @@ Window {
     SeeActiveInfo {
         id: see_active_info
         visible: false
+    }
+
+    Connections {
+        target: customer
+        onSig_clicked_user: {
+            if( customer.user_info_text.length != 0 ) {
+                customer.visible = false
+                customer_details.visible = true
+            }
+        }
     }
 
 }

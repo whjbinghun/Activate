@@ -9,6 +9,7 @@ Rectangle {
     anchors.fill: parent
 
     property alias user_info_text: txt_user_info.text
+    signal sig_clicked_user()
 
     Column {
         Rectangle {
@@ -36,14 +37,16 @@ Rectangle {
                 anchors.fill: parent
                 Image {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    height: parent.height - 30
+                    width: 60
+                    height: 60
                     source: "images/user.png"
+                    sourceSize.width: 60
+                    sourceSize.height: 60
 
                     MouseArea {
-                        onPressed: {
-                            //客户详细信息界面显示
-                            customer_details.visible = true
-
+                        anchors.fill: parent
+                        onClicked: {
+                            emit: sig_clicked_user()
                         }
                     }
                 }
@@ -51,7 +54,7 @@ Rectangle {
                     id: txt_user_info
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    text: "张三（销售部）"
+                    text: ""
                 }
             }
         }
