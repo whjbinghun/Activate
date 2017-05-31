@@ -73,13 +73,16 @@ void SingleConfig::read_config_info(const QJsonObject &json)
 {
     QJsonArray ja_config = json["config_info"].toArray();
 
-    QJsonObject jo_config = ja_config[0].toObject();
-    m_st_config_info.str_server_ip = jo_config["server_ip"].toString();
-    m_st_config_info.str_account = jo_config["username"].toString();
-    m_st_config_info.str_passwd = jo_config["password"].toString();
-    m_st_config_info.str_uuid = jo_config["uuid"].toString();
-    m_st_config_info.str_seqno = jo_config["seqno"].toString();
-    m_st_config_info.b_remember_account = jo_config["remember_account"].toBool();
+    if( ja_config.size() >= 1 ) {
+        QJsonObject jo_config = ja_config[0].toObject();
+        m_st_config_info.str_server_ip = jo_config["server_ip"].toString();
+        m_st_config_info.str_account = jo_config["username"].toString();
+        m_st_config_info.str_passwd = jo_config["password"].toString();
+        m_st_config_info.str_uuid = jo_config["uuid"].toString();
+        m_st_config_info.str_seqno = jo_config["seqno"].toString();
+        m_st_config_info.str_display_name = jo_config["display_name"].toString();
+        m_st_config_info.b_remember_account = jo_config["remember_account"].toBool();
+    }
 }
 
 void SingleConfig::write_config_info(QJsonObject &json) const
@@ -91,6 +94,7 @@ void SingleConfig::write_config_info(QJsonObject &json) const
     jo_config["password"] = m_st_config_info.str_passwd;
     jo_config["uuid"] = m_st_config_info.str_uuid;
     jo_config["seqno"] = m_st_config_info.str_seqno;
+    jo_config["display_name"] = m_st_config_info.str_display_name;
     jo_config["remember_account"] = m_st_config_info.b_remember_account;
     ja_config.append( jo_config );
 

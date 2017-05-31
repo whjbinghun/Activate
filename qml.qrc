@@ -9,5 +9,6 @@
         <file>SeeActiveInfo.qml</file>
         <file>WaitActive.qml</file>
         <file>WaitActiveInfo.qml</file>
+        <file>Customer.qml</file>
     </qresource>
 </RCC>

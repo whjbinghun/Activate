@@ -1,9 +1,11 @@
-import QtQuick 2.4
+﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
-
+/**
+  * 用户详情界面
+  */
 Rectangle {
     id: customer_details
 
@@ -103,6 +105,16 @@ Rectangle {
                     }
                 }
             }
+        }
+    }
+
+    onVisibleChanged: {
+        if( visible ) {
+            txt_user_name.text = login.str_username
+            txt_account.text = login.str_account
+        } else {
+            txt_user_name.text = ""
+            txt_account.text = ""
         }
     }
 }

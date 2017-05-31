@@ -11,6 +11,7 @@ Login::Login(QObject *parent)
     , mb_ver_success( false )
     , ms_account( "" )
     , ms_passwd( "" )
+    , ms_username( "" )
 {
     //init_ctrl();
     init_connect();
@@ -69,6 +70,16 @@ void Login::set_login_passwd(QString str_passwd)
     ms_passwd = str_passwd;
 }
 
+QString Login::get_username()
+{
+    return ms_username;
+}
+
+void Login::set_username(QString str_username)
+{
+    ms_username = str_username;
+}
+
 void Login::init_ctrl()
 {
     SingleConfig::instance()->load_config_info();
@@ -84,6 +95,7 @@ void Login::init_ctrl()
 
         ms_account = st_config_info.str_account;
         ms_passwd = st_config_info.str_passwd;
+        ms_username = st_config_info.str_display_name;
         SingleVerification::instance()->auto_login( st_config_info.str_uuid, st_config_info.str_seqno, ms_account, st_config_info.str_passwd );
     }
 }
@@ -99,11 +111,18 @@ void Login::init_connect()
 void Login::slot_passwd_encrypt( int n_status, QString str_msg, QString str_encrypted_passwd, QString str_salt )
 {
     Q_UNUSED( str_msg )
-    if( n_status != QNetworkReply::NoError ) {
-        emit sig_warning( "验证错误，请重新点击登陆按钮" );//显示到登陆界面中
-    } else {
+    switch ( n_status ) {
+    case QNetworkReply::NoError:
+    {
         ms_passwd = str_encrypted_passwd;
         SingleVerification::instance()->send_account( ms_account, str_encrypted_passwd, str_salt );
+    }
+        break;
+    case QNetworkReply::UnknownServerError:
+        emit sig_warning( "连接认证服务器失败，请联系服务器人员" );
+    default:
+        emit sig_warning( "验证错误，请重新点击登陆按钮" );//显示到登陆界面中
+        break;
     }
 }
 
@@ -122,11 +141,16 @@ void Login::slot_login( int n_status, QString str_msg, UserInfo &st_user_info, b
             st_config_info.str_passwd = ms_passwd;
             st_config_info.str_seqno = st_user_info.str_seqno;
             st_config_info.str_uuid = st_user_info.str_uuid;
+            st_config_info.str_display_name = st_user_info.str_display_name;
             if( st_config_info.str_server_ip.isEmpty() ) {
                 st_config_info.str_server_ip = gs_server_ip;
             }
 
             SingleConfig::instance()->set_config_info( st_config_info );
+
+            ms_account = st_config_info.str_account;
+            ms_passwd = st_config_info.str_passwd;
+            ms_username = st_config_info.str_display_name;
         }
 
         mb_ver_success = true;
