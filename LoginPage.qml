@@ -15,15 +15,34 @@ Window {
     width: n_width
     height: n_height
 
-    visible: !login.b_auto_login
+    visible: true
     modality: Qt.ApplicationModal
     //flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
+
+     Component.onCompleted: {
+         lab_warning.text = ""
+         login.init_ctrl()
+//         text_account.text = login.str_account
+//         text_passwd.text = login.str_passwd
+//         if( text_account.text.length != 0 && text_passwd.text.length != 0 && login.b_auto_login ) {
+//            btn_login.pressed
+//         }
+     }
 
     Connections {
         target: login
 
         onSig_warning: {
             lab_warning.text = str_warning;
+        }
+
+        onSig_remember_account: {
+            text_account.text = login.str_account
+            box_remember_account.checked = b_remember_account;
+        }
+
+        onSig_ver_success: {
+            login_page.visible = !b_ver_success;
         }
     }
 
@@ -106,8 +125,13 @@ Window {
             Row {
                 spacing: 85
                 CheckBox {
+                    id: box_remember_account
                     height: 30
                     text: "记住登录名"
+
+                    onCheckedChanged: {
+                        login.b_remember_account = checked;
+                    }
                 }
 
                 Button {
@@ -132,6 +156,7 @@ Window {
             }
 
             Button {
+                id: btn_login
                 anchors.left: parent.left
                 width: parent.width
                 height: 35

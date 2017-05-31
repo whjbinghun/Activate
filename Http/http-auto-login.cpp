@@ -21,6 +21,9 @@ HttpAutoLogin::HttpAutoLogin(QString str_uuid, QString str_seqno, QString str_ac
     QByteArray array;
     array.append( str_param );
     set_req_params(array);
+
+    UserInfo st_userInfo;
+    m_st_userInfo = st_userInfo;
 }
 
 void HttpAutoLogin::process_response(QString str_result)
@@ -31,17 +34,18 @@ void HttpAutoLogin::process_response(QString str_result)
     QScriptEngine engine;
     QScriptValue sc = engine.evaluate("value=" + str_result);
 
-//    m_st_userInfo.str_uuid = sc.property("uuid").toString();
-//    m_st_userInfo.str_account = sc.property("username").toString();
-//    m_st_userInfo.str_display_name = sc.property("display_name").toString();
-//    m_st_userInfo.str_avatar_url = sc.property("avatar_url").toString();
-//    m_st_userInfo.str_seqno = sc.property("seqno").toString();
+    m_st_userInfo.str_uuid = sc.property("uuid").toString();
+    m_st_userInfo.str_account = sc.property("username").toString();
+    m_st_userInfo.str_display_name = sc.property("display_name").toString();
+    m_st_userInfo.str_avatar_url = sc.property("avatar_url").toString();
+    m_st_userInfo.str_seqno = sc.property("seqno").toString();
 
-//    HttpSignal::instance()->sig_login( 0, "获取信息成功", m_st_userInfo );
+    HttpSignal::instance()->sig_auto_login( 0, "自动登陆验证成功", m_st_userInfo );
     this->deleteLater();
 }
 
 void HttpAutoLogin::process_error(int n_err)
 {
+    HttpSignal::instance()->sig_auto_login( n_err, "自动登陆验证失败", m_st_userInfo );
     this->deleteLater();
 }

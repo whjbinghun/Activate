@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.1
 
 Window {
     id: wnd_user_info
-    visible: login.b_auto_login
+    visible: false
 
     property int n_width: 320
     property int n_height: 580
@@ -21,6 +21,14 @@ Window {
     /*
      *  客户显示界面
      */
+
+    Connections {
+        target: login
+
+        onSig_ver_success: {
+            wnd_user_info.visible = b_ver_success;
+        }
+    }
 
     Column {
         Rectangle {

@@ -23,7 +23,6 @@ HEADERS += \
     common/mission_log.h \
     common/single-config.h \
     common/common.h \
-    common/config-json.h \
     common/common-api.h \
     common/common-struct.h \
     Http/http-encrypt.h \
@@ -41,7 +40,6 @@ SOURCES += main.cpp \
     common/mission_log.cpp \
     common/single-config.cpp \
     common/common-fun.cpp \
-    common/config-json.cpp \
     Http/http-encrypt.cpp \
     Http/http-signal.cpp \
     Http/http-auto-login.cpp

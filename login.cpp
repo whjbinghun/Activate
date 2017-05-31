@@ -7,11 +7,12 @@
 
 Login::Login(QObject *parent)
     : QObject(parent)
-    , mb_auto_login( false )
+    , mb_remember_account( false )
+    , mb_ver_success( false )
     , ms_account( "" )
     , ms_passwd( "" )
 {
-    init_ctrl();
+    //init_ctrl();
     init_connect();
 }
 
@@ -27,31 +28,60 @@ void Login::send_account( QString str_account, QString str_passwd )
     SingleVerification::instance()->send_passwd_encrypt( str_passwd );
 }
 
-bool Login::get_auto_login()
+bool Login::get_remember_account()
 {
-    return mb_auto_login;
+    return mb_remember_account;
 }
 
-void Login::set_auto_login( bool b_auto_login )
+void Login::set_remember_account(bool b_remember_account)
 {
-    mb_auto_login = b_auto_login;
+    mb_remember_account = b_remember_account;
+
+    //把修改写入配置文件中
+    ConfigInfo st_config_info = SingleConfig::instance()->get_config_info();
+    st_config_info.b_remember_account = mb_remember_account;
+    SingleConfig::instance()->set_config_info( st_config_info );
 }
 
 void Login::clear_user_info()
 {
-    mb_auto_login = false;
     ms_account = "";
     ms_passwd = "";
+}
+
+QString Login::get_login_account()
+{
+    return ms_account;
+}
+
+void Login::set_login_account(QString str_account)
+{
+    ms_account = str_account;
+}
+
+QString Login::get_login_passwd()
+{
+    return ms_passwd;
+}
+
+void Login::set_login_passwd(QString str_passwd)
+{
+    ms_passwd = str_passwd;
 }
 
 void Login::init_ctrl()
 {
     SingleConfig::instance()->load_config_info();
     ConfigInfo st_config_info = SingleConfig::instance()->get_config_info();
-    if( st_config_info.str_uuid.isEmpty() || st_config_info.str_account.isEmpty()
-            || st_config_info.str_passwd.isEmpty() || st_config_info.str_seqno.isEmpty() ) {
-        mb_auto_login = false;
-    } else {
+
+    if( st_config_info.b_remember_account ) {
+        ms_account = st_config_info.str_account;
+    }
+    emit sig_remember_account( st_config_info.b_remember_account );
+
+    if( !st_config_info.str_uuid.isEmpty() && !st_config_info.str_account.isEmpty()
+            && !st_config_info.str_passwd.isEmpty() && !st_config_info.str_seqno.isEmpty() ) {
+
         ms_account = st_config_info.str_account;
         ms_passwd = st_config_info.str_passwd;
         SingleVerification::instance()->auto_login( st_config_info.str_uuid, st_config_info.str_seqno, ms_account, st_config_info.str_passwd );
@@ -63,6 +93,7 @@ void Login::init_connect()
     connect( HttpSignal::instance(), SIGNAL(sig_passwd_encrypt(int,QString,QString,QString)), this, SLOT( slot_passwd_encrypt( int, QString, QString, QString ) ) );
     qRegisterMetaType< UserInfo > ( "UserInfo" );
     connect( HttpSignal::instance(), SIGNAL(sig_login(int,QString,UserInfo&)), this, SLOT( slot_login( int , QString, UserInfo& ) ) );
+    connect( HttpSignal::instance(), SIGNAL(sig_auto_login(int,QString,UserInfo&,bool)), this, SLOT( slot_login( int , QString, UserInfo&, bool ) ) );
 }
 
 void Login::slot_passwd_encrypt( int n_status, QString str_msg, QString str_encrypted_passwd, QString str_salt )
@@ -76,30 +107,37 @@ void Login::slot_passwd_encrypt( int n_status, QString str_msg, QString str_encr
     }
 }
 
-void Login::slot_login( int n_status, QString str_msg, UserInfo &st_user_info )
+void Login::slot_login( int n_status, QString str_msg, UserInfo &st_user_info, bool b_auto_login )
 {
+    Q_UNUSED( str_msg )
+
     switch ( n_status ) {
     case QNetworkReply::NoError://认证成功，登录
     {
-        mb_auto_login = true;
-        //保存到配置文件中
-        ConfigInfo st_config_info = SingleConfig::instance()->get_config_info();
+        if( !b_auto_login ) {
+            //保存到配置文件中
+            ConfigInfo st_config_info = SingleConfig::instance()->get_config_info();
 
-        st_config_info.str_account = st_user_info.str_account;
-        st_config_info.str_passwd = ms_passwd;
-        st_config_info.str_seqno = st_user_info.str_seqno;
-        st_config_info.str_uuid = st_user_info.str_uuid;
-        if( st_config_info.str_server_ip.isEmpty() ) {
-            st_config_info.str_server_ip = gs_server_ip;
+            st_config_info.str_account = st_user_info.str_account;
+            st_config_info.str_passwd = ms_passwd;
+            st_config_info.str_seqno = st_user_info.str_seqno;
+            st_config_info.str_uuid = st_user_info.str_uuid;
+            if( st_config_info.str_server_ip.isEmpty() ) {
+                st_config_info.str_server_ip = gs_server_ip;
+            }
+
+            SingleConfig::instance()->set_config_info( st_config_info );
         }
 
-        SingleConfig::instance()->set_config_info( st_config_info );
+        mb_ver_success = true;
+        emit sig_ver_success( mb_ver_success );
     }
         break;
     case QNetworkReply::AuthenticationRequiredError:
     {
         emit sig_warning( "账号认证失败!" );
-        mb_auto_login = false;
+        mb_ver_success = false;
+        emit sig_ver_success( mb_ver_success );
     }
         break;
     default:

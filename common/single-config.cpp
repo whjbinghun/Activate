@@ -79,6 +79,7 @@ void SingleConfig::read_config_info(const QJsonObject &json)
     m_st_config_info.str_passwd = jo_config["password"].toString();
     m_st_config_info.str_uuid = jo_config["uuid"].toString();
     m_st_config_info.str_seqno = jo_config["seqno"].toString();
+    m_st_config_info.b_remember_account = jo_config["remember_account"].toBool();
 }
 
 void SingleConfig::write_config_info(QJsonObject &json) const
@@ -90,6 +91,7 @@ void SingleConfig::write_config_info(QJsonObject &json) const
     jo_config["password"] = m_st_config_info.str_passwd;
     jo_config["uuid"] = m_st_config_info.str_uuid;
     jo_config["seqno"] = m_st_config_info.str_seqno;
+    jo_config["remember_account"] = m_st_config_info.b_remember_account;
     ja_config.append( jo_config );
 
     json["config_info"] = ja_config;

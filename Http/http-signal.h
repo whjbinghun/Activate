@@ -37,6 +37,7 @@ signals:
      */
     void sig_passwd_encrypt( int n_status, QString str_msg, QString str_encrypted_passwd, QString str_salt );
     void sig_login( int n_status, QString str_msg, UserInfo &st_user_info );
+    void sig_auto_login( int n_status, QString str_msg, UserInfo &st_user_info, bool b_auto_login = true );
 private:
     static HttpSignal* mp_instance;
 };
