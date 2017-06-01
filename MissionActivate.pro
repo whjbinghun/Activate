@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick network script
+QT += qml quick network script core concurrent multimedia
 CONFIG += c++11
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -8,6 +8,7 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+include( $$PWD/QZXing/sharedlibrary/JQQRCodeReader/JQQRCodeReader.pri )
 
 INCLUDEPATH += Http/
 INCLUDEPATH += common/

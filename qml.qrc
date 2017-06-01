@@ -10,5 +10,6 @@
         <file>WaitActive.qml</file>
         <file>WaitActiveInfo.qml</file>
         <file>Customer.qml</file>
+        <file>ScanCode.qml</file>
     </qresource>
 </RCC>

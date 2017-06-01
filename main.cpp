@@ -5,6 +5,7 @@
 #include "single-verification.h"
 #include "single-config.h"
 #include "http-signal.h"
+#include "JQQRCodeReaderForQml.h"
 
 void single_manager_instance()
 {
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
 
     Login *p_login = new Login;
     engine.rootContext()->setContextProperty( "login", p_login );
+    JQQRCODEREADERFORQML_REGISTERTYPE( engine );
 
     engine.load( QUrl(QStringLiteral("qrc:/LoginPage.qml") ) );
 

@@ -1,4 +1,4 @@
-import QtQuick 2.4
+﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
@@ -31,8 +31,6 @@ Rectangle {
             text: "查看信息"
         }
     }
-
-
 
     Column {
         anchors.top: rct_title.bottom

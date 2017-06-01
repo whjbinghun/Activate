@@ -1,8 +1,8 @@
 # Prerequisites
 *.d
 *.pro.user
-*_Debug/
-*_Release/
+*-Debug/
+*-Release/
 # Compiled Object files
 *.slo
 *.lo
