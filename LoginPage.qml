@@ -61,7 +61,7 @@ Window {
                 anchors.left: parent.left
                 anchors.leftMargin: 15
                 anchors.verticalCenter: parent.verticalCenter
-                text: "软件激活平台"
+                text: qsTr("软件激活平台")
             }
         }
         Image {
@@ -80,7 +80,7 @@ Window {
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pointSize: 20
-                text: "登录"
+                text: qsTr("登录")
             }
 
             Row {
@@ -127,7 +127,7 @@ Window {
                 CheckBox {
                     id: box_remember_account
                     height: 30
-                    text: "记住登录名"
+                    text: qsTr("记住登录名")
 
                     onCheckedChanged: {
                         login.b_remember_account = checked;
@@ -136,7 +136,7 @@ Window {
 
                 Button {
                     height: 30
-                    text: "忘记密码?"
+                    text: qsTr("忘记密码?")
                     style: ButtonStyle {
                         background: Rectangle {
 
@@ -151,7 +151,7 @@ Window {
                 width: parent.width
                 height: 35
 
-                text: ""
+                text: qsTr("")
 
             }
 
@@ -160,7 +160,7 @@ Window {
                 anchors.left: parent.left
                 width: parent.width
                 height: 35
-                text: "登录"
+                text: qsTr("登录")
                 style: ButtonStyle {
                     background: Rectangle {
                         radius: 8
@@ -177,12 +177,12 @@ Window {
                     var str_account = text_account.text;
                     var str_passwd = text_passwd.text;
                     if( str_account.length == 0 ) {
-                        lab_warning.text = "账号不能为空！"
+                        lab_warning.text = qsTr("账号不能为空！")
                         return;
                     }
 
                     if( str_passwd.length == 0 ) {
-                        lab_warning.text = "账号不能为空！"
+                        lab_warning.text = qsTr("账号不能为空！")
                         return;
                     }
 

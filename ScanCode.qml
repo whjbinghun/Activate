@@ -15,7 +15,7 @@ Rectangle {
 
     signal sig_qrCode_return()
 
-    property string qr_text: ""   //二维码内容
+    property string qr_text: qsTr("")   //二维码内容
 
     onVisibleChanged: {
         qr_code_reader.active = visible
@@ -38,7 +38,7 @@ Rectangle {
                 spacing: 10
                 Button {
                     id: btn_return
-                    text: "返回"
+                    text: qsTr("返回")
                     style: ButtonStyle {
                         background: Rectangle {
                             //implicitWidth: 100
@@ -60,7 +60,7 @@ Rectangle {
 //                        anchors.left: parent.left
 //                        anchors.leftMargin: 15
                     anchors.verticalCenter: parent.verticalCenter
-                    text: "软件激活平台"
+                    text: qsTr("软件激活平台")
                 }
             }
         }

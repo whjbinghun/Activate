@@ -6,6 +6,7 @@
 #include "single-config.h"
 #include "http-signal.h"
 #include "JQQRCodeReaderForQml.h"
+#include <QTranslator>
 
 void single_manager_instance()
 {
@@ -24,6 +25,12 @@ void single_manager_release()
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    //支持国际化
+//    QTranslator translator;
+//    translator.load(/*QString(argv[1])*/":i18n/qml_base_en.qm");
+//    app.installTranslator(&translator);
+
 
     QQmlApplicationEngine engine;
 

@@ -33,7 +33,7 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 15
                 anchors.verticalCenter: parent.verticalCenter
-                text: "软件激活平台"
+                text: qsTr("软件激活平台")
             }
         }
 
@@ -52,7 +52,7 @@ Rectangle {
 
             Row {
                 Label {
-                    text: "姓名"
+                    text: qsTr("姓名")
                 }
 
                 Text {
@@ -62,7 +62,7 @@ Rectangle {
 
             Row {
                 Label {
-                    text: "部门"
+                    text: qsTr("部门")
                 }
                 Text {
                     id: txt_dep_name
@@ -70,14 +70,14 @@ Rectangle {
             }
             Row {
                 Label {
-                    text: "账号"
+                    text: qsTr("账号")
                 }
                 Text {
                     id: txt_account
                 }
             }
             Button {
-                text: "登录密码修改"
+                text: qsTr("登录密码修改")
                 style: ButtonStyle {
                     background: Rectangle {
 
@@ -90,7 +90,7 @@ Rectangle {
                 }
             }
             Button {
-                text: "账号切换"
+                text: qsTr("账号切换")
                 style: ButtonStyle {
                     background: Rectangle {
 
@@ -98,7 +98,7 @@ Rectangle {
                 }
             }
             Button {
-                text: "退出"
+                text: qsTr("退出")
                 style: ButtonStyle {
                     background: Rectangle {
 

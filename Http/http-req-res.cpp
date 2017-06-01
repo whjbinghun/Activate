@@ -6,10 +6,14 @@
 
 HttpReqRes::HttpReqRes(QObject *parent)
     : QObject(parent)
+    , m_pManager( NULL )
+    , m_pReply( NULL )
     , m_nReconnectTimes(0)
+    , m_sUrlAddress( "" )
+    , ms_url_header( "" )
+    , m_sTestUrl( "" )
     , mn_over_time_len(10)
     , m_bOverTime(false)
-    , ms_url_header( "" )
 {
     QString str_server_ip = SingleConfig::instance()->get_config_info().str_server_ip;
     if( str_server_ip.isEmpty() ) {

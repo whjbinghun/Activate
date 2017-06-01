@@ -28,7 +28,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 15
             anchors.verticalCenter: parent.verticalCenter
-            text: "查看信息"
+            text: qsTr("查看信息")
         }
     }
 
@@ -46,7 +46,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 Label {
                     height: 30
-                    text: "软件名称："
+                    text: qsTr("软件名称：")
                 }
                 Label {
                     height: 30
@@ -57,7 +57,7 @@ Rectangle {
         Row {
             Label {
                 height: 30
-                text: "软件版本："
+                text: qsTr("软件版本：")
             }
             Label {
                 id: lab_soft_version
@@ -69,7 +69,7 @@ Rectangle {
         Row {
             Label {
                 height: 30
-                text: "机器序列码："
+                text: qsTr("机器序列码：")
             }
             Label { //序列号
                 id: lab_serial_num
@@ -81,7 +81,7 @@ Rectangle {
         Row {
             Label {
                 height: 30
-                text: "公司单位名："
+                text: qsTr("公司单位名：")
             }
             Label {
                 id: lab_company_name
@@ -93,7 +93,7 @@ Rectangle {
         Row {
             Label {
                 height: 30
-                text: "用户名称："
+                text: qsTr("用户名称：")
             }
             Label {
                 id: lab_user_name
@@ -105,7 +105,7 @@ Rectangle {
         Row {
             Label {
                 height: 30
-                text: "申请单位："
+                text: qsTr("申请单位：")
             }
             Label { //申请单位
                 id: lab_apply_unit
@@ -117,7 +117,7 @@ Rectangle {
             Label {
                 height: 30
 
-                text: "申请人名称："
+                text: qsTr("申请人名称：")
             }
             Label {
                 id: lab_applicant_name
@@ -130,7 +130,7 @@ Rectangle {
             Label {
                 height: 30
 
-                text: "备注："
+                text: qsTr("备注：")
             }
             Label {
                 id: lab_remarks

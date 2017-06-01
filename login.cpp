@@ -119,9 +119,9 @@ void Login::slot_passwd_encrypt( int n_status, QString str_msg, QString str_encr
     }
         break;
     case QNetworkReply::UnknownServerError:
-        emit sig_warning( "连接认证服务器失败，请联系服务器人员" );
+        emit sig_warning( tr("连接认证服务器失败，请联系服务器人员") );
     default:
-        emit sig_warning( "验证错误，请重新点击登陆按钮" );//显示到登陆界面中
+        emit sig_warning( tr("验证错误，请重新点击登陆按钮") );//显示到登陆界面中
         break;
     }
 }

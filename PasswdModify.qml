@@ -1,4 +1,4 @@
-import QtQuick 2.4
+﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
@@ -28,7 +28,7 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 15
                 anchors.verticalCenter: parent.verticalCenter
-                text: "修改密码"
+                text: qsTr("修改密码")
             }
         }
 
@@ -41,7 +41,7 @@ Rectangle {
 
             Row {
                 Label {
-                    text: "当前密码："
+                    text: qsTr("当前密码：")
                 }
                 TextField {
 
@@ -49,7 +49,7 @@ Rectangle {
             }
             Row {
                 Label {
-                    text: "新密码："
+                    text: qsTr("新密码：")
                 }
                 TextField {
 
@@ -57,7 +57,7 @@ Rectangle {
             }
             Row {
                 Label {
-                    text: "确认新密码："
+                    text: qsTr("确认新密码：")
                 }
                 TextField {
 
@@ -65,13 +65,13 @@ Rectangle {
             }
 
             Label {
-                text: "密码长度至少6个字符，最多32个字符"
+                text: qsTr("密码长度至少6个字符，最多32个字符")
             }
 
             Button {
                 width: parent.width
                 height: 30
-                text: "确认"
+                text: qsTr("确认")
                 style: ButtonStyle {
                     background: Rectangle {
                         gradient: Gradient {    //颜色渐变

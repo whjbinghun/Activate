@@ -1,4 +1,4 @@
-import QtQuick 2.4
+﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
@@ -31,7 +31,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 15
             anchors.verticalCenter: parent.verticalCenter
-            text: "激活信息"
+            text: qsTr("激活信息")
         }
     }
 
@@ -61,20 +61,20 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize: 17
-            text: "激活信息已发送成功！"
+            text: qsTr("激活信息已发送成功！")
         }
 
         Text {
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: "正在生成激活码，请稍后......"
+            text: qsTr("正在生成激活码，请稍后......")
         }
 
         Button {
             width: parent.width
             height: 30
-            text: "查看激活信息"
+            text: qsTr("查看激活信息")
             style: ButtonStyle {
 
                 background: Rectangle {

@@ -3,6 +3,8 @@ TEMPLATE = app
 QT += qml quick network script core concurrent multimedia
 CONFIG += c++11
 
+TRANSLATIONS += en.ts zh_CN.ts zh_TW.ts    #国际化
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
@@ -46,5 +48,6 @@ SOURCES += main.cpp \
     Http/http-auto-login.cpp
 
 RESOURCES += qml.qrc \
-    images.qrc
+    images.qrc \
+    i18n.qrc
 

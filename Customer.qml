@@ -29,7 +29,7 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.leftMargin: 15
                     anchors.verticalCenter: parent.verticalCenter
-                    text: "软件激活平台"
+                    text: qsTr("软件激活平台")
                 }
             }
 
@@ -58,7 +58,7 @@ Rectangle {
                         id: txt_user_info
                         width: parent.width
                         horizontalAlignment: Text.AlignHCenter
-                        text: ""
+                        text: qsTr("")
                     }
                 }
             }
@@ -73,7 +73,7 @@ Rectangle {
                     id: scan_qr
                     height: 40
                     //iconSource: "images/qr.jpg"
-                    text: "扫描二维码"
+                    text: qsTr("扫描二维码")
 
                     onClicked: {
                         rct_content.visible = false
@@ -84,14 +84,14 @@ Rectangle {
                 Button {
                     id: approve_info
                     height: 40
-                    text: "审批信息"
+                    text: qsTr("审批信息")
                     //iconSource: "images/dep_info.png"
 
                 }
                 Button {
                     id: active_list
                     height: 40
-                    text: "激活列表"
+                    text: qsTr("激活列表")
                     //iconSource: "images/active.png"
                     onPressedChanged: {
                         //customer_details.visible = true
