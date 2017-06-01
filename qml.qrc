@@ -11,5 +11,6 @@
         <file>WaitActiveInfo.qml</file>
         <file>Customer.qml</file>
         <file>ScanCode.qml</file>
+        <file>ApprovalInfo.qml</file>
     </qresource>
 </RCC>
