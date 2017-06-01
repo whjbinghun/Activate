@@ -71,7 +71,7 @@ Rectangle {
 
             onTagFound: {
                 qr_text = tag;
-                qr_code_reader.active = false
+                emit: sig_qrCode_return()
             }
         }
     }
