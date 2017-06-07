@@ -97,7 +97,7 @@ QString AuditData::get_audit_date(int index)
     return st_audit.str_date;
 }
 
-QString AuditData::get_send_name(int index)
+QString AuditData::get_audit_send_name(int index)
 {
     if( index < 0 && index >= m_map_audited.size() ) return "";
 
@@ -105,7 +105,15 @@ QString AuditData::get_send_name(int index)
     return st_audit.str_send_name;
 }
 
-QString AuditData::get_department(int index)
+QString AuditData::get_audit_approver(int index)
+{
+    if( index < 0 && index >= m_map_audited.size() ) return "";
+
+    AuditInfo st_audit = m_map_audited.value( index );
+    return st_audit.str_approver;
+}
+
+QString AuditData::get_audit_department(int index)
 {
     if( index < 0 && index >= m_map_audited.size() ) return "";
 
@@ -113,7 +121,7 @@ QString AuditData::get_department(int index)
     return st_audit.str_department;
 }
 
-QString AuditData::get_soft_name(int index)
+QString AuditData::get_audit_soft_name(int index)
 {
     if( index < 0 && index >= m_map_audited.size() ) return "";
 
@@ -121,12 +129,20 @@ QString AuditData::get_soft_name(int index)
     return st_audit.str_soft_name;
 }
 
-QString AuditData::get_serial_num(int index)
+QString AuditData::get_audit_serial_num(int index)
 {
     if( index < 0 && index >= m_map_audited.size() ) return "";
 
     AuditInfo st_audit = m_map_audited.value( index );
     return st_audit.str_serial_num;
+}
+
+QString AuditData::get_audit_activation_code( int index )
+{
+    if( index < 0 && index >= m_map_audited.size() ) return "";
+
+    AuditInfo st_audit = m_map_audited.value( index );
+    return st_audit.str_activation_code;
 }
 
 QString AuditData::get_refuse_status(int index)
@@ -152,6 +168,14 @@ QString AuditData::get_refuse_send_name(int index)
 
     AuditInfo st_audit = m_map_refuse.value( index );
     return st_audit.str_send_name;
+}
+
+QString AuditData::get_refuse_approver(int index)
+{
+    if( index < 0 && index >= m_map_refuse.size() ) return "";
+
+    AuditInfo st_audit = m_map_refuse.value( index );
+    return st_audit.str_approver;
 }
 
 QString AuditData::get_refuse_department(int index)
@@ -247,5 +271,99 @@ void AuditData::init_test()
     st_auditInfo.str_soft_name = "yf_play";
     st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
     m_map_pending_audit.insert( st_auditInfo.n_id, st_auditInfo );
+
+    //已审核
+    st_auditInfo.n_id = 0;
+    st_auditInfo.n_audit_status = 3;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+    st_auditInfo.str_activation_code = "385erierjfeisfjdfjjsdf";
+
+    m_map_audited.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 1;
+    st_auditInfo.n_audit_status = 4;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+    st_auditInfo.str_activation_code = "385erierjfeisfjdfjjsdf";
+
+    m_map_audited.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 2;
+    st_auditInfo.n_audit_status = 3;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+    st_auditInfo.str_activation_code = "385erierjfeisfjdfjjsdf";
+
+    m_map_audited.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 3;
+    st_auditInfo.n_audit_status = 3;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+    st_auditInfo.str_activation_code = "385erierjfeisfjdfjjsdf";
+
+    m_map_audited.insert( st_auditInfo.n_id, st_auditInfo );
+
+    //拒绝
+    st_auditInfo.n_id = 0;
+    st_auditInfo.n_audit_status = 5;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+
+    m_map_refuse.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 1;
+    st_auditInfo.n_audit_status = 6;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+
+    m_map_refuse.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 2;
+    st_auditInfo.n_audit_status = 5;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+
+    m_map_refuse.insert( st_auditInfo.n_id, st_auditInfo );
+
+    st_auditInfo.n_id = 3;
+    st_auditInfo.n_audit_status = 6;
+    st_auditInfo.str_date = "2017-06-07";
+    st_auditInfo.str_send_name = "张三";
+    st_auditInfo.str_approver = "王五";
+    st_auditInfo.str_department = "销售部";
+    st_auditInfo.str_soft_name = "yf_play";
+    st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
+
+    m_map_refuse.insert( st_auditInfo.n_id, st_auditInfo );
 }
 

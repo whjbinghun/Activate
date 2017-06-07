@@ -32,18 +32,22 @@ typedef struct _tagAuditInfo {
     int n_audit_status;//审核状态 1：待审核 2.等待锁定 3. 已审核 4. 拒绝
     QString str_date;//状态设置时间
     QString str_send_name;//发送人
+    QString str_approver;//审批人
     QString str_department;//部门
     QString str_soft_name;//软件名
     QString str_serial_num;//机器序列号
+    QString str_activation_code;//激活码
 
     _tagAuditInfo()
         : n_id( -1 )
         , n_audit_status( 1 )
         , str_date( "" )
         , str_send_name( "" )
+        , str_approver( "" )
         , str_department( "" )
         , str_soft_name( "" )
-        , str_serial_num( "" ) {}
+        , str_serial_num( "" )
+        , str_activation_code( "" ){}
 }AuditInfo;
 Q_DECLARE_METATYPE(AuditInfo)
 

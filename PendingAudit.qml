@@ -21,7 +21,7 @@ Rectangle {
                                            ,"date": audit_data.get_pending_date( i )
                                            , "username":audit_data.get_pending_send_name( i )
                                            , "department":audit_data.get_pending_department( i )
-                                           , "soft_name": audit_data.get_pending_soft_name( 1 )
+                                           , "soft_name": audit_data.get_pending_soft_name( i )
                                            , "serial_no":audit_data.get_pending_serial_num( i ) } )
         }
     }
@@ -29,8 +29,10 @@ Rectangle {
     Component {
         id: contactDelegate
         Item {
-            width: rct_pending.width; height: 40*3
+            width: rct_pending.width
+            height: column_pending.height
             Column {
+                id: column_pending
                 spacing: 5
                 Row {
                     spacing: rct_pending.width - (text_status.width + text_date.width)
@@ -50,7 +52,7 @@ Rectangle {
                     font.pixelSize: 14
                 }
                 Text {
-                    text: '<b>部门：</b> ' + department
+                    text: '<b>部门:</b> ' + department
                     font.pixelSize: 14
                 }
                 Text {
@@ -65,6 +67,11 @@ Rectangle {
                 Text {
                     text: '<b>机器序列码:</b> ' + serial_no
                     font.pixelSize: 14
+                }
+                Rectangle {
+                   width:  rct_pending.width
+                   height: 1
+                   color: "black"
                 }
             }
         }

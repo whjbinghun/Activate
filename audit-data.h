@@ -30,14 +30,17 @@ public:
     //已审核
     Q_INVOKABLE QString get_audit_status( int index );
     Q_INVOKABLE QString get_audit_date( int index );
-    Q_INVOKABLE QString get_send_name( int index );
-    Q_INVOKABLE QString get_department( int index );
-    Q_INVOKABLE QString get_soft_name( int index );
-    Q_INVOKABLE QString get_serial_num( int index );
+    Q_INVOKABLE QString get_audit_send_name( int index );
+    Q_INVOKABLE QString get_audit_approver( int index );
+    Q_INVOKABLE QString get_audit_department( int index );
+    Q_INVOKABLE QString get_audit_soft_name( int index );
+    Q_INVOKABLE QString get_audit_serial_num( int index );
+    Q_INVOKABLE QString get_audit_activation_code( int index );
     //拒绝
     Q_INVOKABLE QString get_refuse_status( int index );
     Q_INVOKABLE QString get_refuse_date( int index );
     Q_INVOKABLE QString get_refuse_send_name( int index );
+    Q_INVOKABLE QString get_refuse_approver( int index );
     Q_INVOKABLE QString get_refuse_department( int index );
     Q_INVOKABLE QString get_refuse_soft_name( int index );
     Q_INVOKABLE QString get_refuse_serial_num( int index );
