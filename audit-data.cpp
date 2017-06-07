@@ -113,6 +113,14 @@ QString AuditData::get_audit_approver(int index)
     return st_audit.str_approver;
 }
 
+int AuditData::get_audit_effective_days( int index )
+{
+    if( index < 0 && index >= m_map_audited.size() ) return 0;
+
+    AuditInfo st_audit = m_map_audited.value( index );
+    return st_audit.n_effective_days;
+}
+
 QString AuditData::get_audit_department(int index)
 {
     if( index < 0 && index >= m_map_audited.size() ) return "";
@@ -278,6 +286,7 @@ void AuditData::init_test()
     st_auditInfo.str_date = "2017-06-07";
     st_auditInfo.str_send_name = "张三";
     st_auditInfo.str_approver = "王五";
+    st_auditInfo.n_effective_days = 300;
     st_auditInfo.str_department = "销售部";
     st_auditInfo.str_soft_name = "yf_play";
     st_auditInfo.str_serial_num = "1112321sdfksjdlfk";
@@ -290,6 +299,7 @@ void AuditData::init_test()
     st_auditInfo.str_date = "2017-06-07";
     st_auditInfo.str_send_name = "张三";
     st_auditInfo.str_approver = "王五";
+    st_auditInfo.n_effective_days = 200;
     st_auditInfo.str_department = "销售部";
     st_auditInfo.str_soft_name = "yf_play";
     st_auditInfo.str_serial_num = "1112321sdfksjdlfk";

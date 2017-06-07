@@ -32,6 +32,7 @@ public:
     Q_INVOKABLE QString get_audit_date( int index );
     Q_INVOKABLE QString get_audit_send_name( int index );
     Q_INVOKABLE QString get_audit_approver( int index );
+    Q_INVOKABLE int get_audit_effective_days( int index );
     Q_INVOKABLE QString get_audit_department( int index );
     Q_INVOKABLE QString get_audit_soft_name( int index );
     Q_INVOKABLE QString get_audit_serial_num( int index );

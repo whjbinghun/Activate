@@ -97,9 +97,8 @@ Rectangle {
                     text: qsTr("激活列表")
                     //iconSource: "images/active.png"
                     onClicked: {
-                        //customer_details.visible = true
-                        //passwd_modify.visible = true
-                        see_active_info.visible = true
+                        rct_content.visible = false
+                        active_info_list.visible = true
                     }
                 }
             }
@@ -118,6 +117,12 @@ Rectangle {
         visible: false
     }
 
+    AcitveInfoList {//激活信息列表
+        id: active_info_list
+        anchors.fill: parent
+        visible: false
+    }
+
     Connections {
         target: scan_code
         onSig_qrCode_return: {
@@ -132,6 +137,14 @@ Rectangle {
         onSig_return_customer: {
 
             approval_info.visible = false
+            rct_content.visible = true
+        }
+    }
+
+    Connections {
+        target: active_info_list
+        onSig_return_customer: {
+            active_info_list.visible = false
             rct_content.visible = true
         }
     }

@@ -33,6 +33,7 @@ typedef struct _tagAuditInfo {
     QString str_date;//状态设置时间
     QString str_send_name;//发送人
     QString str_approver;//审批人
+    int n_effective_days;//剩余有效天数
     QString str_department;//部门
     QString str_soft_name;//软件名
     QString str_serial_num;//机器序列号
@@ -44,6 +45,7 @@ typedef struct _tagAuditInfo {
         , str_date( "" )
         , str_send_name( "" )
         , str_approver( "" )
+        , n_effective_days( 0 )
         , str_department( "" )
         , str_soft_name( "" )
         , str_serial_num( "" )

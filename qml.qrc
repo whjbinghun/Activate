@@ -15,5 +15,7 @@
         <file>PendingAudit.qml</file>
         <file>Audited.qml</file>
         <file>Refuse.qml</file>
+        <file>AcitveInfoList.qml</file>
+        <file>ActivedInfo.qml</file>
     </qresource>
 </RCC>
