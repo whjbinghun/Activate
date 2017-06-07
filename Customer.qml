@@ -86,14 +86,17 @@ Rectangle {
                     height: 40
                     text: qsTr("审批信息")
                     //iconSource: "images/dep_info.png"
-
+                    onClicked: {
+                        rct_content.visible = false
+                        approval_info.visible = true
+                    }
                 }
                 Button {
                     id: active_list
                     height: 40
                     text: qsTr("激活列表")
                     //iconSource: "images/active.png"
-                    onPressedChanged: {
+                    onClicked: {
                         //customer_details.visible = true
                         //passwd_modify.visible = true
                         see_active_info.visible = true
@@ -105,6 +108,13 @@ Rectangle {
 
     ScanCode {
         id: scan_code
+        anchors.fill: parent
+        visible: false
+    }
+
+    ApprovalInfo {//审批信息
+        id: approval_info
+        anchors.fill: parent
         visible: false
     }
 
@@ -113,6 +123,15 @@ Rectangle {
         onSig_qrCode_return: {
             var qr_text = scan_code.qr_text
             scan_code.visible = false
+            rct_content.visible = true
+        }
+    }
+
+    Connections {
+        target: approval_info
+        onSig_return_customer: {
+
+            approval_info.visible = false
             rct_content.visible = true
         }
     }

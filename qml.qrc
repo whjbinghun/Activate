@@ -12,5 +12,8 @@
         <file>Customer.qml</file>
         <file>ScanCode.qml</file>
         <file>ApprovalInfo.qml</file>
+        <file>PendingAudit.qml</file>
+        <file>Audited.qml</file>
+        <file>Refuse.qml</file>
     </qresource>
 </RCC>

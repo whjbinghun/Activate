@@ -8,6 +8,15 @@ enum EHttpErrorNo {     //Http错误码
     e_permitError = 502, //通行证错误
 };
 
+enum EAudit {           //审核状态
+    e_pending_active = 1, //等待激活
+    e_pending_lock = 2,   //等待锁定
+    e_active_suc = 3,     //激活成功
+    e_lock_suc = 4,       //锁定成功
+    e_refuse_active = 5,  //拒绝激活
+    e_refuse_lock = 6,    //拒绝锁定
+};
+
 //enum EServerHttpErrorCode{
 //    e_connectError = -1,
 //    e_success = 0, // 成功

@@ -32,7 +32,8 @@ HEADERS += \
     Http/http-signal.h \
     Http/http-struct.h \
     Http/http-auto-login.h \
-    Http/http-api.h
+    Http/http-api.h \
+    audit-data.h
 
 SOURCES += main.cpp \
     login.cpp \
@@ -45,7 +46,8 @@ SOURCES += main.cpp \
     common/common-fun.cpp \
     Http/http-encrypt.cpp \
     Http/http-signal.cpp \
-    Http/http-auto-login.cpp
+    Http/http-auto-login.cpp \
+    audit-data.cpp
 
 RESOURCES += qml.qrc \
     images.qrc \

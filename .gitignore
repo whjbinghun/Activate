@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 *.pro.user
+*.pro.user.*
 *-Debug/
 *-Release/
 # Compiled Object files
