@@ -59,9 +59,22 @@ Rectangle {
                     text: '<b>审批人:</b> ' + approver + '(' + department + ')'
                     font.pixelSize: 14
                 }
-                Text {
-                    text: '<b>剩余有效天数:</b> ' + effective_days +'天'
-                    font.pixelSize: 14
+
+                Row {
+                    spacing: rct_active.width - ( text_eff_days.width + btn_lock.width)
+                    Text {
+                        id: text_eff_days
+                        text: '<b>剩余有效天数:</b> ' + effective_days +'天'
+                        font.pixelSize: 14
+                    }
+
+                    Button {
+                        id: btn_lock
+                        text: "锁定"
+                        onClicked: {
+                            dlg_lock.visible = true
+                        }
+                    }
                 }
 
                 Text {
@@ -101,6 +114,79 @@ Rectangle {
         delegate: contactDelegate
         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
+    }
+
+    Dialog {
+        id: dlg_lock
+        title: "提示"
+        visible: false
+        //standardButtons: StandardButton.Ok | StandardButton.Cancel
+        contentItem: Rectangle {
+            color: "lightskyblue"
+            implicitWidth: 300
+            implicitHeight: 150
+
+            Column {
+                anchors.fill: parent
+                anchors.topMargin: 30
+                spacing: 20
+                Text {
+                    text: "<b>是否锁定激活码？</b>"
+                    color: "navy"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: "(锁定后激活码无效)"
+                    color: "navy"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Row {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    height: 30
+                    Button {
+                        text: "确定"
+                        width: parent.width/2
+                        height: 30
+                        style: ButtonStyle {
+                            background: Rectangle {
+                                border.width: 1
+                                gradient: Gradient {
+                                    GradientStop {position: 0.0; color: "lightsteelblue" }
+                                    GradientStop {position: 1.0; color: "blue" }
+                                }
+                            }
+                        }
+
+                        onClicked: {
+                            dlg_lock.visible = false
+                            //系统将锁定信息发送给销售员对应的区域经理，若区域经理手机中软件激活平台APP处于运行状态，则锁定信息以弹框的形式显示
+                        }
+                    }
+
+                    Button {
+                        text: "取消"
+                        width: parent.width - parent.width/2
+                        height: 30
+                        style: ButtonStyle {
+                            background: Rectangle {
+                                border.width: 1
+                                gradient: Gradient {
+                                    GradientStop {position: 0.0; color: "lightsteelblue" }
+                                    GradientStop {position: 1.0; color: "blue" }
+                                }
+                            }
+                        }
+
+                        onClicked: {
+                            dlg_lock.visible = false
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
