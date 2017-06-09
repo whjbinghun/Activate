@@ -83,7 +83,7 @@ Rectangle {
 
                     }
                 }
-                onPressedChanged: {
+                onClicked: {
                     customer_details.visible = false
 
                     passwd_modify.visible = true
@@ -115,6 +115,15 @@ Rectangle {
         } else {
             txt_user_name.text = ""
             txt_account.text = ""
+        }
+    }
+
+    Connections {
+        target: passwd_modify
+        onSig_return_user_details: {
+            passwd_modify.init_info()
+            passwd_modify.visible = false
+            customer_details.visible = true
         }
     }
 }
