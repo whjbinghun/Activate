@@ -12,6 +12,7 @@ Rectangle {
     property alias user_info_text: txt_user_info.text
     signal sig_clicked_user()
     signal sig_return_login()
+    signal sig_quit()
 
     Rectangle {
         id: rct_content
@@ -128,6 +129,10 @@ Rectangle {
         target: customer_details
         onSig_return_login: {
             emit: sig_return_login()
+        }
+
+        onSig_quit: {
+            emit: sig_quit()
         }
     }
 

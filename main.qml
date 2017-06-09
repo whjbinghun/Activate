@@ -79,6 +79,10 @@ Window {
             wnd_user_info.visible = false
             //信息初始化
         }
+
+        onSig_quit: {
+            wnd_user_info.close()
+        }
     }
 
 }

@@ -19,7 +19,7 @@ Login::Login(QObject *parent)
 
 Login::~Login()
 {
-
+    qDebug()<<"Login::~Login()";
 }
 
 void Login::send_account( QString str_account, QString str_passwd )
