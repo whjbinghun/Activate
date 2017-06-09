@@ -73,6 +73,12 @@ Window {
                 customer_details.visible = true
             }
         }
+
+        onSig_return_login: {
+            login.show_login( true )
+            wnd_user_info.visible = false
+            //信息初始化
+        }
     }
 
 }

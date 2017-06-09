@@ -44,6 +44,10 @@ Window {
         onSig_ver_success: {
             login_page.visible = !b_ver_success;
         }
+
+        onSig_show_login: {
+            login_page.visible = b_show;
+        }
     }
 
     Column {

@@ -15,6 +15,8 @@ Rectangle {
     width: n_width
     height: n_height
 
+    signal sig_return_login()
+
     MouseArea {
         //手往左边滑动，窗口移动向左边
     }
@@ -95,6 +97,10 @@ Rectangle {
                     background: Rectangle {
 
                     }
+                }
+
+                onClicked: {
+                    emit: sig_return_login()
                 }
             }
             Button {

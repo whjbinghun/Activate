@@ -80,6 +80,11 @@ void Login::set_username(QString str_username)
     ms_username = str_username;
 }
 
+void Login::show_login( bool b_show )
+{
+    emit sig_show_login( b_show );
+}
+
 void Login::init_ctrl()
 {
     SingleConfig::instance()->load_config_info();

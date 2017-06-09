@@ -27,10 +27,13 @@ public:
     void set_login_passwd( QString str_passwd );
     QString get_username();
     void set_username( QString str_username );
+
+    Q_INVOKABLE void show_login( bool b_show );
 signals:
     void sig_warning( QString str_warning );
     void sig_remember_account( bool b_remember_account );
     void sig_ver_success( bool b_ver_success );
+    void sig_show_login( bool b_show );
 private:
     void init_connect();
 private slots:

@@ -11,6 +11,7 @@ Rectangle {
 
     property alias user_info_text: txt_user_info.text
     signal sig_clicked_user()
+    signal sig_return_login()
 
     Rectangle {
         id: rct_content
@@ -121,6 +122,13 @@ Rectangle {
         id: active_info_list
         anchors.fill: parent
         visible: false
+    }
+
+    Connections {
+        target: customer_details
+        onSig_return_login: {
+            emit: sig_return_login()
+        }
     }
 
     Connections {
