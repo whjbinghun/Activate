@@ -23,6 +23,7 @@ Rectangle {
     }
 
     Column {
+        id: column_title
         Rectangle {
             width: n_width
             height: 40
@@ -41,80 +42,83 @@ Rectangle {
         }
 
         Image {
+            id: image_title
             width: n_width
             height: 150
             source: "images/title.png"
         }
+    }
 
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            spacing: 20
+    Column {
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.top: column_title.bottom
+        anchors.topMargin: 20
+        spacing: 20
 
-            Row {
-                Label {
-                    text: qsTr("姓名")
+        Row {
+            Label {
+                text: qsTr(" 姓名")
+            }
+
+            Text {
+                id: txt_user_name
+            }
+        }
+
+        Row {
+            Label {
+                text: qsTr(" 部门")
+            }
+            Text {
+                id: txt_dep_name
+            }
+        }
+        Row {
+            Label {
+                text: qsTr(" 账号")
+            }
+            Text {
+                id: txt_account
+            }
+        }
+        Button {
+            text: qsTr("登录密码修改")
+            style: ButtonStyle {
+                background: Rectangle {
+
                 }
+            }
+            onClicked: {
+                customer_details.visible = false
 
-                Text {
-                    id: txt_user_name
+                passwd_modify.visible = true
+            }
+        }
+        Button {
+            text: qsTr("账号切换")
+            style: ButtonStyle {
+                background: Rectangle {
+
                 }
             }
 
-            Row {
-                Label {
-                    text: qsTr("部门")
-                }
-                Text {
-                    id: txt_dep_name
+            onClicked: {
+                emit: sig_return_login()
+            }
+        }
+        Button {
+            text: qsTr("退出")
+            style: ButtonStyle {
+                background: Rectangle {
+
                 }
             }
-            Row {
-                Label {
-                    text: qsTr("账号")
-                }
-                Text {
-                    id: txt_account
-                }
-            }
-            Button {
-                text: qsTr("登录密码修改")
-                style: ButtonStyle {
-                    background: Rectangle {
 
-                    }
-                }
-                onClicked: {
-                    customer_details.visible = false
-
-                    passwd_modify.visible = true
-                }
-            }
-            Button {
-                text: qsTr("账号切换")
-                style: ButtonStyle {
-                    background: Rectangle {
-
-                    }
-                }
-
-                onClicked: {
-                    emit: sig_return_login()
-                }
-            }
-            Button {
-                text: qsTr("退出")
-                style: ButtonStyle {
-                    background: Rectangle {
-
-                    }
-                }
-
-                onClicked: {
-                    emit: sig_quit()
-                }
+            onClicked: {
+                emit: sig_quit()
             }
         }
     }

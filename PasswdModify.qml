@@ -24,6 +24,17 @@ Rectangle {
             Button {
                 //iconSource:
                 height: 40
+                opacity: 0
+//                style: ButtonStyle {
+//                    background: Rectangle {
+
+//                        gradient: Gradient {    //颜色渐变
+//                            GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
+//                            GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
+//                        }
+//                    }
+//                }
+
                 onClicked: {
                     emit: sig_return_user_details()
                 }
@@ -60,6 +71,7 @@ Rectangle {
             }
             TextField {
                 id: text_cur_passwd
+                width: 200
                 height: 40
             }
 
@@ -70,6 +82,7 @@ Rectangle {
             }
             TextField {
                 id: text_new_passwd
+                width: 200
                 height: 40
             }
 
@@ -80,6 +93,7 @@ Rectangle {
             }
             TextField {
                 id: text_sure_new_passwd
+                width: 200
                 height: 40
             }
         }
