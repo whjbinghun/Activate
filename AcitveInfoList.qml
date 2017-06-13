@@ -54,7 +54,7 @@ Rectangle {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("激活列表")
+                text: qsTr( "激活列表" )
             }
         }
     }

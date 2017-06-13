@@ -46,6 +46,30 @@ void HttpReqRes::set_req_params(QByteArray byArr)
     m_reqParams = byArr;
 }
 
+void HttpReqRes::get_request()
+{
+    QNetworkRequest request;
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    QByteArray n_post_data_size = QByteArray::number( m_reqParams.size() );
+    request.setRawHeader( "Content-Length", n_post_data_size );
+    request.setUrl(QUrl(ms_url_header));
+
+    m_pReply = m_pManager->get( request );
+    connect(m_pReply, SIGNAL(finished()), this, SLOT(slot_ReplyFinished()));
+    m_sTestUrl = request.url().toString().append(m_reqParams); // 测试用
+    if (!m_sTestUrl.contains( gs_server_ip ) )
+    {
+        qDebug()<<m_sTestUrl;
+        MissonLog::instance()->write_debug_log(m_sTestUrl);
+    }
+
+    m_bOverTime = false;
+    if (!m_overTimer.isActive())
+    {
+        m_overTimer.start(mn_over_time_len*1000);
+    }
+}
+
 void HttpReqRes::post_request()
 {
     QNetworkRequest request;

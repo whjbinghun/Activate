@@ -2,6 +2,7 @@ TEMPLATE = app
 
 QT += qml quick network script core concurrent multimedia
 CONFIG += c++11
+CONFIG += warn_on    #告诉编译器显示尽可能详尽的警告信息
 
 TRANSLATIONS += en.ts zh_CN.ts zh_TW.ts    #国际化
 

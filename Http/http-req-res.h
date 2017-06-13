@@ -15,6 +15,7 @@ public:
     void set_net_manager(QNetworkAccessManager* pManager);
     void set_header( QString str_header );//设置包头
     void set_req_params(QByteArray byArr);
+    void get_request();
     void post_request();
     QString get_test_url(); // 测试用
     void set_over_time_lengh(int n_over_time_lengh); // 设置超时时长

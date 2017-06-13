@@ -78,7 +78,7 @@ Rectangle {
                 }
 
                 Text {
-                    text: '<b>现场设备录入系统</b> '
+                    text: '<b>现场设备录入系统</b>'
                     font.pixelSize: 14
                 }
                 Text {
