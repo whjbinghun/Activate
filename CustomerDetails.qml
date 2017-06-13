@@ -15,6 +15,7 @@ Rectangle {
     width: n_width
     height: n_height
 
+    signal sig_return_customer()
     signal sig_return_login()
     signal sig_quit()
 
@@ -33,11 +34,23 @@ Rectangle {
                 GradientStop {position: 1.0; color: "blue" }
             }
 
-            Text {
-                anchors.left: parent.left
-                anchors.leftMargin: 15
-                anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("软件激活平台")
+            Row {
+                spacing: 10
+
+                Button {
+                    //iconSource:
+                    height: 40
+                    opacity: 0
+
+                    onClicked: {
+                        emit: sig_return_customer()
+                    }
+                }
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("软件激活平台")
+                }
             }
         }
 

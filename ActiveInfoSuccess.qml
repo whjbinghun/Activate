@@ -7,11 +7,13 @@ import QtQuick.Layouts 1.1
 Rectangle {
     id: avtive_info_details
 
+    width: n_width
+    height: n_height
+
     property int n_width: 320
     property int n_height: 580
 
-    width: n_width
-    height: n_height
+    signal sig_see_active_info()
 
     Rectangle {
         id: rct_title
@@ -27,11 +29,23 @@ Rectangle {
             GradientStop {position: 1.0; color: "blue" }
         }
 
-        Text {
-            anchors.left: parent.left
-            anchors.leftMargin: 15
-            anchors.verticalCenter: parent.verticalCenter
-            text: qsTr("激活信息")
+        Row {
+            spacing: 10
+
+            Button {
+                //iconSource:
+                height: 40
+                opacity: 0
+
+                onClicked: {
+                    emit: sig_return_customer()
+                }
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: qsTr("激活信息")
+            }
         }
     }
 
@@ -76,7 +90,6 @@ Rectangle {
             height: 30
             text: qsTr("查看激活信息")
             style: ButtonStyle {
-
                 background: Rectangle {
                     radius: 8
                     gradient: Gradient {    //颜色渐变
@@ -84,6 +97,10 @@ Rectangle {
                         GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
                     }
                 }
+            }
+
+            onClicked: {
+                emit: sig_see_active_info()
             }
         }
     }

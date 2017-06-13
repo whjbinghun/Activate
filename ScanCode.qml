@@ -52,6 +52,7 @@ Rectangle {
                     }
 
                     onClicked: {
+                        qr_text = "现场设备录入系统（yfplatform-single-pro-basic-data):2.1.5.8:14324324:sdfjsd:张三:第三方库就是开发:章三"
                         emit: sig_qrCode_return()
                     }
                 }
@@ -71,7 +72,11 @@ Rectangle {
 
             onTagFound: {
                 qr_text = tag;
-                emit: sig_qrCode_return()
+                if( qr_text.length == 0 ) {
+                    //给一个提示信息
+                } else {
+                    emit: sig_qrCode_return()
+                }
             }
         }
     }

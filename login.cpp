@@ -29,6 +29,12 @@ void Login::send_account( QString str_account, QString str_passwd )
     SingleVerification::instance()->send_passwd_encrypt( str_passwd );
 }
 
+//向服务器端发送激活信息
+void Login::send_active_info( QString str_active_info )
+{
+
+}
+
 bool Login::get_remember_account()
 {
     return mb_remember_account;

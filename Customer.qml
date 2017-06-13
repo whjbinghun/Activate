@@ -125,8 +125,32 @@ Rectangle {
         visible: false
     }
 
+    ActiveInfoDetails {
+        id: active_info_details
+        anchors.fill: parent
+        visible: false
+    }
+
+    ActiveInfoSuccess {
+        id: active_info_suc
+        anchors.fill: parent
+        visible: false
+    }
+
+    SeeActiveInfo {
+        id: see_active_info
+        anchors.fill: parent
+        visible: false
+    }
+
     Connections {
         target: customer_details
+
+        onSig_return_customer: {
+            customer_details.visible = false
+            rct_customer.visible = true
+        }
+
         onSig_return_login: {
             emit: sig_return_login()
         }
@@ -141,7 +165,13 @@ Rectangle {
         onSig_qrCode_return: {
             var qr_text = scan_code.qr_text
             scan_code.visible = false
-            rct_content.visible = true
+
+            if( qr_text.length == 0 ) {
+                rct_content.visible = true
+            } else {
+                active_info_details.visible = true
+                active_info_details.set_active_info( qr_text )
+            }
         }
     }
 
@@ -159,6 +189,22 @@ Rectangle {
         onSig_return_customer: {
             active_info_list.visible = false
             rct_content.visible = true
+        }
+    }
+
+    Connections {
+        target: active_info_details
+        onSig_show_active_suc: {
+            active_info_details.visible = false
+            active_info_suc.visible = true
+        }
+    }
+
+    Connections {
+        target: active_info_suc
+        onSig_see_active_info: {
+            active_info_suc.visible = false
+            see_active_info.visible = true
         }
     }
 }

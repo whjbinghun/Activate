@@ -50,21 +50,6 @@ Window {
         visible: false
     }
 
-    ActiveInfoDetails {
-        id: active_info_details
-        visible: false
-    }
-
-    ActiveInfoSuccess {
-        id: active_info_success
-        visible: false
-    }
-
-    SeeActiveInfo {
-        id: see_active_info
-        visible: false
-    }
-
     Connections {
         target: customer
         onSig_clicked_user: {
