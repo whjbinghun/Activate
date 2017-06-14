@@ -17,5 +17,7 @@
         <file>Refuse.qml</file>
         <file>AcitveInfoList.qml</file>
         <file>ActivedInfo.qml</file>
+        <file>WndActiveSuc.qml</file>
+        <file>ActiveCode.qml</file>
     </qresource>
 </RCC>

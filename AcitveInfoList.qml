@@ -8,6 +8,7 @@ import QtQuick.Layouts 1.1
  * 激活信息列表
  */
 Rectangle {
+    id: active_info_list
     anchors.fill: parent
 
     signal sig_return_customer()

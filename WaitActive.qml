@@ -14,6 +14,7 @@ Window {
     title: qsTr( "等待激活" )
     visible: false
     modality: Qt.WindowModal
+    flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
 
     signal sig_show_wait_active_wnd()
 
