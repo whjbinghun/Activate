@@ -71,7 +71,7 @@ Window {
         Image {
             width: n_width
             height: 150
-            source: "images/title.png"
+            source: "title.png"
         }
 
         Column {
@@ -94,7 +94,7 @@ Window {
                     border.width: 1
                     Image {
                         anchors.fill: parent
-                        source: "images/user.png"
+                        source: "user.png"
                     }
                 }
 
@@ -113,7 +113,7 @@ Window {
                     border.width: 1
                     Image {
                         anchors.fill: parent
-                        source: "images/pwd.png"
+                        source: "pwd.png"
                     }
                 }
 

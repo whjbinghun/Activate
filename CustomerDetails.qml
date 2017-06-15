@@ -58,7 +58,7 @@ Rectangle {
             id: image_title
             width: n_width
             height: 150
-            source: "images/title.png"
+            source: "title.png"
         }
     }
 

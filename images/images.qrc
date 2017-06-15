@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>active.png</file>
+        <file>dep_info.png</file>
+        <file>pwd.png</file>
+        <file>qr.jpg</file>
+        <file>title.png</file>
+        <file>user.png</file>
+    </qresource>
+</RCC>

@@ -45,7 +45,7 @@ Rectangle {
                         anchors.horizontalCenter: parent.horizontalCenter
                         width: 60
                         height: 60
-                        source: "images/user.png"
+                        source: "user.png"
                         sourceSize.width: 60
                         sourceSize.height: 60
 
@@ -74,7 +74,7 @@ Rectangle {
                 Button {
                     id: scan_qr
                     height: 40
-                    //iconSource: "images/qr.jpg"
+                    //iconSource: "qr.jpg"
                     text: qsTr("扫描二维码")
 
                     onClicked: {
@@ -87,7 +87,7 @@ Rectangle {
                     id: approve_info
                     height: 40
                     text: qsTr("审批信息")
-                    //iconSource: "images/dep_info.png"
+                    //iconSource: "dep_info.png"
                     onClicked: {
                         rct_content.visible = false
                         approval_info.visible = true
@@ -97,7 +97,7 @@ Rectangle {
                     id: active_list
                     height: 40
                     text: qsTr("激活列表")
-                    //iconSource: "images/active.png"
+                    //iconSource: "active.png"
                     onClicked: {
                         rct_content.visible = false
                         active_info_list.visible = true

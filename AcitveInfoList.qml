@@ -21,6 +21,7 @@ Rectangle {
      * title
      */
     Rectangle {
+        id: rct_title
         width: parent.width
         height: 40
         //color: Qt.blue//"#0099FFFF"
@@ -61,6 +62,21 @@ Rectangle {
     }
 
     //筛选
+    Button {
+        id: btn_screen
+        anchors.top: rct_title.bottom
+        height: 40
+        style: ButtonStyle {
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+
+        text: qsTr( "筛选" )
+        onClicked: {
+            screen_info.visible = !screen_info.visible
+        }
+    }
 
     /*
      * 已激活信息
@@ -72,5 +88,15 @@ Rectangle {
         z: 1
     }
 
+    ScreenInfo {
+        id: screen_info
+        anchors.top: rct_title.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: parent.width - parent.width*2/3
+        width: parent.width*2/3
+        height: parent.height - rct_title.height
+        visible: false
 
+        z: 3
+    }
 }

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>en.qm</file>
+        <file>qml_base_en.qm</file>
+        <file>zh_CN.qm</file>
+    </qresource>
+</RCC>

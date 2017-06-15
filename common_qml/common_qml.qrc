@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>SelectButton.qml</file>
+    </qresource>
+</RCC>

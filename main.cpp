@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     //支持国际化
 //    QTranslator translator;
-//    translator.load(/*QString(argv[1])*/":i18n/qml_base_en.qm");
+//    translator.load(/*QString(argv[1])*/":qml_base_en.qm");
 //    app.installTranslator(&translator);
 
 
