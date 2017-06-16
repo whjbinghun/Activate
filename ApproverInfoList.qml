@@ -10,26 +10,41 @@ import QtQuick.Layouts 1.1
 
 Rectangle {
     id: rct_approver_list
-    anchors.fill: parent
+    //anchors.fill: parent
+
+    property string text
+    property int value
+    property int gn_btn_height: 30
+
+    Text {
+        id: text_approver
+        anchors.top: parent.top
+        anchors.topMargin: 20
+        height: 20
+        text: qsTr( "审批人" )
+    }
 
     Component {
         id: contactDelegate
         Item {
-            width: rct_active.width
+            width: rct_approver_list.width
             height: 30
             Row {
                 id: row_approver
-                spacing: 10
+                spacing: 20
 
                 Button {
+                    text: user_name_1
                     visible: (text.length==0?false:true)
                 }
 
                 Button {
+                    text: user_name_2
                     visible: (text.length==0?false:true)
                 }
 
                 Button {
+                    text: user_name_3
                     visible: (text.length==0?false:true)
                 }
             }
@@ -38,16 +53,42 @@ Rectangle {
 
     ListModel {
         id: list_active_info
-        //ListElement { date: ""; username: ""; department: "";soft_name:""; serial_no: "" }
     }
 
     ListView {
-        anchors.fill: parent
+        anchors.top: text_approver.bottom
+        anchors.left: text_approver.left
+        height: parent.height - text_approver.x - text_approver.height
         model: list_active_info
         delegate: contactDelegate
         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
     }
 
+    onTextChanged: {
+        list_active_info.clear()
 
+        if( text.length === 0 ) {
+            visible = false
+        } else {
+            visible = true
+            var strList = text.split(":")
+            var n_len_row = Math.floor( strList.length/3 )
+            var n_len_leave = strList.length%3    //余
+
+            for( var i =0; i< n_len_row; ++i ) {
+                list_active_info.append( {"user_name_1":strList[i*3], "user_name_2":strList[i*3+1], "user_name_3":strList[i*3+2] } )
+            }
+
+            if( n_len_leave == 1 ) {
+                list_active_info.append( {"user_name_1": strList[n_len_row*3], "user_name_2":"", "user_name_3":"" } )
+            } else if( n_len_leave == 2 ) {
+                list_active_info.append( {"user_name_1": strList[n_len_row*3], "user_name_2":strList[n_len_row*3+1], "user_name_3":"" } )
+            }
+
+            var n_height = n_len_row * gn_btn_height + (n_len_leave > 0 ? gn_btn_height:0)
+
+            height = n_height + gn_btn_height
+        }
+    }
 }

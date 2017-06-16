@@ -112,7 +112,7 @@ Rectangle {
         anchors.fill: parent
         model: list_active_info
         delegate: contactDelegate
-        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+        //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
     }
 

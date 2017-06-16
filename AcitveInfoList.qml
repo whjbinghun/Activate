@@ -26,7 +26,7 @@ Rectangle {
         height: 40
         //color: Qt.blue//"#0099FFFF"
         border.width: 1
-        z: 50
+        z: 5
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "lightsteelblue" }
             GradientStop {position: 1.0; color: "blue" }
@@ -66,6 +66,7 @@ Rectangle {
         id: btn_screen
         anchors.top: rct_title.bottom
         height: 40
+        z: 5
         style: ButtonStyle {
             background: Rectangle {
                 opacity: 0
