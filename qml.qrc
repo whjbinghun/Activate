@@ -22,5 +22,7 @@
         <file>ApproverInfoList.qml</file>
         <file>ScreenInfo.qml</file>
         <file>SenderList.qml</file>
+        <file>WndWaitLock.qml</file>
+        <file>WaitLock.qml</file>
     </qresource>
 </RCC>
