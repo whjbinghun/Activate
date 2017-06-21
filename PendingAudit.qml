@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import JQQRCodeReader 1.0
+import "common_qml"
 
 /*
  * 待审核
@@ -34,44 +35,52 @@ Rectangle {
             Column {
                 id: column_pending
                 spacing: 5
-                Row {
-                    spacing: rct_pending.width - (text_status.width + text_date.width)
+
+                Column {
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+
+                    spacing: 5
+                    Row {
+                        spacing: rct_pending.width - (text_status.width + text_date.width + 20)
+                        Text {
+                            id: text_status
+                            text: status
+                            font.pixelSize: 14
+                        }
+                        Text {
+                            id: text_date
+                            text: date
+                            font.pixelSize: 14
+                        }
+                    }
                     Text {
-                        id: text_status
-                        text: status
+                        text: '<b>发送人:</b> ' + username
                         font.pixelSize: 14
                     }
                     Text {
-                        id: text_date
-                        text: date
+                        text: '<b>部门:</b> ' + department
                         font.pixelSize: 14
                     }
-                }
-                Text {
-                    text: '<b>发送人:</b> ' + username
-                    font.pixelSize: 14
-                }
-                Text {
-                    text: '<b>部门:</b> ' + department
-                    font.pixelSize: 14
-                }
-                Text {
-                    text: '<b>现场设备录入系统</b> '
-                    font.pixelSize: 14
-                }
-                Text {
-                    text: soft_name
-                    font.pixelSize: 14
+                    Text {
+                        text: '<b>现场设备录入系统</b> '
+                        font.pixelSize: 14
+                    }
+                    Text {
+                        text: soft_name
+                        font.pixelSize: 14
+                    }
+
+                    Text {
+                        text: '<b>机器序列码:</b> ' + serial_no
+                        font.pixelSize: 14
+                    }
                 }
 
-                Text {
-                    text: '<b>机器序列码:</b> ' + serial_no
-                    font.pixelSize: 14
-                }
-                Rectangle {
-                   width:  rct_pending.width
-                   height: 1
-                   color: "black"
+                Line {
+                    width:  rct_pending.width
                 }
             }
         }
@@ -86,7 +95,8 @@ Rectangle {
           anchors.fill: parent
           model: list_pending_audit_info
           delegate: contactDelegate
-          highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+          //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
           focus: true
+          spacing: 10   //数据间隔
       }
 }

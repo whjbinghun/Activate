@@ -24,12 +24,10 @@ Rectangle {
         id: rct_title
         width: parent.width
         height: 40
-        //color: Qt.blue//"#0099FFFF"
-        border.width: 1
         z: 5
         gradient: Gradient {    //颜色渐变
-            GradientStop {position: 0.0; color: "lightsteelblue" }
-            GradientStop {position: 1.0; color: "blue" }
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
         }
 
         Row {
@@ -38,17 +36,8 @@ Rectangle {
             Button {
                 width: 40
                 height: 40
-
+                opacity: 0.1
                 //iconSource:
-                style: ButtonStyle {
-                    background: Rectangle {
-                        border.width: 1
-                        gradient: Gradient {
-                            GradientStop {position: 0.0; color: "lightsteelblue" }
-                            GradientStop {position: 1.0; color: "blue" }
-                        }
-                    }
-                }
                 onClicked: {
                     emit: sig_return_customer()
                 }
@@ -56,6 +45,7 @@ Rectangle {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
+                color: "white"
                 text: qsTr( "激活列表" )
             }
         }
@@ -65,6 +55,8 @@ Rectangle {
     Button {
         id: btn_screen
         anchors.top: rct_title.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 10
         height: 40
         z: 5
         style: ButtonStyle {
@@ -85,6 +77,8 @@ Rectangle {
     ActivedInfo {
         id: actived_info
         anchors.fill: parent
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
         anchors.topMargin: 80
         z: 1
     }

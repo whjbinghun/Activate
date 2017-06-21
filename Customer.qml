@@ -1,9 +1,7 @@
 ﻿import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
-import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
-import JQQRCodeReader 1.0
 
 Rectangle {
     id: rct_customer
@@ -15,26 +13,28 @@ Rectangle {
     signal sig_quit()
 
     Rectangle {
+        width: n_width
+        height: 40
+        //border.width: 1
+        gradient: Gradient {    //颜色渐变
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
+        }
+
+        Text {
+            anchors.left: parent.left
+            anchors.leftMargin: 15
+            anchors.verticalCenter: parent.verticalCenter
+            text: qsTr("软件激活平台")
+            color: "white"
+        }
+    }
+
+    Rectangle {
         id: rct_content
         anchors.fill: parent
+        anchors.topMargin: 40
         Column {
-            Rectangle {
-                width: n_width
-                height: 40
-                border.width: 1
-                gradient: Gradient {    //颜色渐变
-                    GradientStop {position: 0.0; color: "lightsteelblue" }
-                    GradientStop {position: 1.0; color: "blue" }
-                }
-
-                Text {
-                    anchors.left: parent.left
-                    anchors.leftMargin: 15
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("软件激活平台")
-                }
-            }
-
             Rectangle {
                 width: n_width
                 height: 150
@@ -74,8 +74,13 @@ Rectangle {
                 Button {
                     id: scan_qr
                     height: 40
-                    //iconSource: "qr.jpg"
-                    text: qsTr("扫描二维码")
+                    iconSource: "qr.jpg"
+                    text: qsTr(" 扫描二维码")
+                    style: ButtonStyle {
+                        background: Rectangle {
+                            border.width: 0
+                        }
+                    }
 
                     onClicked: {
                         rct_content.visible = false
@@ -86,8 +91,14 @@ Rectangle {
                 Button {
                     id: approve_info
                     height: 40
-                    text: qsTr("审批信息")
-                    //iconSource: "dep_info.png"
+                    text: qsTr(" 审批信息")
+                    iconSource: "dep_info.png"
+                    style: ButtonStyle {
+                        background: Rectangle {
+                            border.width: 0
+                        }
+                    }
+
                     onClicked: {
                         rct_content.visible = false
                         approval_info.visible = true
@@ -96,8 +107,14 @@ Rectangle {
                 Button {
                     id: active_list
                     height: 40
-                    text: qsTr("激活列表")
-                    //iconSource: "active.png"
+                    text: qsTr(" 激活列表")
+                    iconSource: "active.png"
+                    style: ButtonStyle {
+                        background: Rectangle {
+                            border.width: 0
+                        }
+                    }
+
                     onClicked: {
                         rct_content.visible = false
                         active_info_list.visible = true

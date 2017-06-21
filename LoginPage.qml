@@ -55,16 +55,16 @@ Window {
             width: n_width
             height: 40
             //color: Qt.blue//"#0099FFFF"
-            border.width: 1
             gradient: Gradient {    //颜色渐变
-                GradientStop {position: 0.0; color: "lightsteelblue" }
-                GradientStop {position: 1.0; color: "blue" }
+                GradientStop {position: 0.0; color: "#0099FF" }
+                GradientStop {position: 1.0; color: "#0099FF" }
             }
 
             Text {
                 anchors.left: parent.left
                 anchors.leftMargin: 15
                 anchors.verticalCenter: parent.verticalCenter
+                color: "white"
                 text: qsTr("软件激活平台")
             }
         }
@@ -164,13 +164,17 @@ Window {
                 anchors.left: parent.left
                 width: parent.width
                 height: 35
-                text: qsTr("登录")
                 style: ButtonStyle {
+                    label: Text {
+                        color: "white"
+                        text: qsTr("登录")
+                    }
+
                     background: Rectangle {
                         radius: 8
                         gradient: Gradient {    //颜色渐变
-                            GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
-                            GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
+                            GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
+                            GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }
                         }
                     }
                 }

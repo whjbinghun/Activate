@@ -4,6 +4,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
+import "common_qml"
 
 /*
  * 激活码
@@ -29,8 +30,8 @@ Window {
         height: 40
         border.width: 1
         gradient: Gradient {    //颜色渐变
-            GradientStop {position: 0.0; color: "lightsteelblue" }
-            GradientStop {position: 1.0; color: "blue" }
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
         }
 
         Row {
@@ -109,70 +110,56 @@ Window {
                         wrapMode: Text.Wrap    //文本换行
                     }
 
-                    Rectangle {//line
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "软件版本:" + version
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "机器序列码:" + serial_no
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "公司单位名:" + unit_name
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "用户名称:" + username
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "申请单位:" + apply_company_name
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {
                         text: "申请人名称:" + apply_username
                     }
 
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        border.color: "blue"
+                    Line {
+                       width: parent.width
                     }
 
                     Text {

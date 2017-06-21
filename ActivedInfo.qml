@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
+import "common_qml"
 
 /*
  * 已激活信息
@@ -70,7 +71,21 @@ Rectangle {
 
                     Button {
                         id: btn_lock
-                        text: "锁定"
+                        style: ButtonStyle {
+                            label: Text {
+                                color: "white"
+                                text: "锁定"
+                            }
+
+                            background: Rectangle {
+                                radius: 4
+                                gradient: Gradient {
+                                    GradientStop {position: 0.0; color: "#0099FF" }
+                                    GradientStop {position: 1.0; color: "#0099FF" }
+                                }
+                            }
+                        }
+
                         onClicked: {
                             dlg_lock.visible = true
                         }
@@ -94,10 +109,9 @@ Rectangle {
                     text: '<b>激活码:</b> ' + activation_code
                     font.pixelSize: 14
                 }
-                Rectangle {
-                   width:  rct_active.width
-                   height: 1
-                   color: "black"
+
+                Line {
+                    width:  rct_active.width
                 }
             }
         }
@@ -114,6 +128,7 @@ Rectangle {
         delegate: contactDelegate
         //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
+        spacing: 10
     }
 
     Dialog {
@@ -122,7 +137,7 @@ Rectangle {
         visible: false
         //standardButtons: StandardButton.Ok | StandardButton.Cancel
         contentItem: Rectangle {
-            color: "lightskyblue"
+            //color: "lightskyblue"
             implicitWidth: 300
             implicitHeight: 150
 
@@ -147,15 +162,21 @@ Rectangle {
                     anchors.right: parent.right
                     height: 30
                     Button {
-                        text: "确定"
                         width: parent.width/2
                         height: 30
                         style: ButtonStyle {
+                            label: Text {
+                                color: "blue"
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                                text: "确定"
+                            }
+
                             background: Rectangle {
                                 border.width: 1
                                 gradient: Gradient {
-                                    GradientStop {position: 0.0; color: "lightsteelblue" }
-                                    GradientStop {position: 1.0; color: "blue" }
+                                    GradientStop {position: 0.0; color: "white" }
+                                    GradientStop {position: 1.0; color: "white" }
                                 }
                             }
                         }
@@ -167,15 +188,20 @@ Rectangle {
                     }
 
                     Button {
-                        text: "取消"
                         width: parent.width - parent.width/2
                         height: 30
                         style: ButtonStyle {
+                            label: Text {
+                                color: "blue"
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                                text: "取消"
+                            }
                             background: Rectangle {
                                 border.width: 1
                                 gradient: Gradient {
-                                    GradientStop {position: 0.0; color: "lightsteelblue" }
-                                    GradientStop {position: 1.0; color: "blue" }
+                                    GradientStop {position: 0.0; color: "white" }
+                                    GradientStop {position: 1.0; color: "white" }
                                 }
                             }
                         }

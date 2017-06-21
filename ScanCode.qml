@@ -27,10 +27,9 @@ Rectangle {
             width: n_width
             height: 40
 
-            border.width: 1
             gradient: Gradient {    //颜色渐变
-                GradientStop {position: 0.0; color: "lightsteelblue" }
-                GradientStop {position: 1.0; color: "blue" }
+                GradientStop {position: 0.0; color: "#0099FF" }
+                GradientStop {position: 1.0; color: "#0099FF" }
             }
 
             Row {
@@ -38,18 +37,9 @@ Rectangle {
                 spacing: 10
                 Button {
                     id: btn_return
+                    height: parent.height
                     text: qsTr("返回")
-                    style: ButtonStyle {
-                        background: Rectangle {
-                            //implicitWidth: 100
-                            implicitHeight: 40
-                            border.width: 0
-                            gradient: Gradient {    //颜色渐变
-                                GradientStop {position: 0.0; color: "lightsteelblue" }
-                                GradientStop {position: 1.0; color: "blue" }
-                            }
-                        }
-                    }
+                    opacity: 0.1
 
                     onClicked: {
                         qr_text = "现场设备录入系统（yfplatform-single-pro-basic-data):2.1.5.8:14324324:sdfjsd:张三:第三方库就是开发:章三"
@@ -58,9 +48,8 @@ Rectangle {
                 }
 
                 Text {
-//                        anchors.left: parent.left
-//                        anchors.leftMargin: 15
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "white"
                     text: qsTr("软件激活平台")
                 }
             }

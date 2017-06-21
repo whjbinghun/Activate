@@ -13,10 +13,9 @@ Rectangle {
         id: rect_title
         width: n_width
         height: 40
-        border.width: 1
         gradient: Gradient {    //颜色渐变
-            GradientStop {position: 0.0; color: "lightsteelblue" }
-            GradientStop {position: 1.0; color: "blue" }
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
         }
 
         Row {
@@ -25,15 +24,6 @@ Rectangle {
                 //iconSource:
                 height: 40
                 opacity: 0
-//                style: ButtonStyle {
-//                    background: Rectangle {
-
-//                        gradient: Gradient {    //颜色渐变
-//                            GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
-//                            GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
-//                        }
-//                    }
-//                }
 
                 onClicked: {
                     emit: sig_return_user_details()
@@ -41,10 +31,9 @@ Rectangle {
             }
 
             Text {
-//                anchors.left: parent.left
-//                anchors.leftMargin: 15
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("修改密码")
+                color: "white"
             }
         }
     }
@@ -100,18 +89,24 @@ Rectangle {
 
         Label {
             text: qsTr("密码长度至少6个字符，最多32个字符")
+            color: "#828282"
         }
 
         Button {
             width: parent.width
             height: 30
-            text: qsTr("确认")
             style: ButtonStyle {
+                label: Text {   //定制按钮的文本
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: qsTr("确认")
+                    color: "white"
+                }
                 background: Rectangle {
                     radius: 4
                     gradient: Gradient {    //颜色渐变
-                        GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
-                        GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
+                        GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
+                        GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }
                     }
                 }
             }

@@ -24,8 +24,8 @@ Window {
             height: 40
             border.width: 1
             gradient: Gradient {    //颜色渐变
-                GradientStop {position: 0.0; color: "lightsteelblue" }
-                GradientStop {position: 1.0; color: "blue" }
+                GradientStop {position: 0.0; color: "#0099FF" }
+                GradientStop {position: 1.0; color: "#0099FF" }
             }
 
             Text {
@@ -39,11 +39,13 @@ Window {
         Row {
             Text {
                 id: text_send_name
+                color: "blue"
                 text: qsTr( "发送人" )
             }
 
             Text {
                 id: text_send_date
+                color: "blue"
                 text: qsTr( "" )
             }
         }
@@ -65,7 +67,13 @@ Window {
         Row {
             Button {
                 id: btn_close
-                text: qsTr( "关闭" )
+                style: ButtonStyle {
+                    label: Text {
+                        color: "blue"
+                        text: qsTr( "关闭" )
+                    }
+                }
+
                 onClicked: {
                     wnd_wait_active.visible = false
                 }
@@ -73,7 +81,12 @@ Window {
 
             Button {
                 id: btn_see
-                text: qsTr( "查看" )
+                style: ButtonStyle {
+                    label: Text {
+                        color: "blue"
+                        text: qsTr( "查看" )
+                    }
+                }
                 onClicked: {
                     wnd_wait_active.visible = false
                     emit: sig_show_wait_active_wnd()

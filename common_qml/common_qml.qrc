@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>SelectButton.qml</file>
+        <file>TitleBar.qml</file>
+        <file>Line.qml</file>
     </qresource>
 </RCC>

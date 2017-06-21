@@ -33,11 +33,10 @@ Rectangle {
         width: parent.width
         height: 40
         //color: Qt.blue//"#0099FFFF"
-        border.width: 1
         z: 50
         gradient: Gradient {    //颜色渐变
-            GradientStop {position: 0.0; color: "lightsteelblue" }
-            GradientStop {position: 1.0; color: "blue" }
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
         }
 
         Row {
@@ -48,15 +47,6 @@ Rectangle {
                 height: 40
 
                 //iconSource:
-                style: ButtonStyle {
-                    background: Rectangle {
-                        border.width: 1
-                        gradient: Gradient {
-                            GradientStop {position: 0.0; color: "lightsteelblue" }
-                            GradientStop {position: 1.0; color: "blue" }
-                        }
-                    }
-                }
                 onClicked: {
                     emit: sig_return_customer()
                 }
@@ -64,6 +54,7 @@ Rectangle {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
+                color: "white"
                 text: qsTr("审批信息")
             }
         }
@@ -80,9 +71,15 @@ Rectangle {
         Button {
             width: parent.width/3
             height: 30
-            text: qsTr( "待审核" )
             //iconSource:
             style: ButtonStyle {
+                label: Text {
+                    color: "blue"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: qsTr( "待审核" )
+                }
+
                 background: Rectangle {
                     border.width: 1
                     radius: 4
@@ -101,9 +98,15 @@ Rectangle {
         Button {
             width: parent.width/3
             height: 30
-            text: qsTr( "已审核" )
             //iconSource:
             style: ButtonStyle {
+                label: Text {
+                    color: "blue"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: qsTr( "已审核" )
+                }
+
                 background: Rectangle {
                     border.width: 1
                     radius: 4
@@ -123,9 +126,15 @@ Rectangle {
         Button {
             width: parent.width - parent.width*2/3
             height: 30
-            text: qsTr( "拒绝" )
             //iconSource:
             style: ButtonStyle {
+                label: Text {
+                    color: "blue"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: qsTr( "拒绝" )
+                }
+
                 background: Rectangle {
                     border.width: 1
                     radius: 4

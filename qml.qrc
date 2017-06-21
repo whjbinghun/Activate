@@ -24,5 +24,8 @@
         <file>SenderList.qml</file>
         <file>WndWaitLock.qml</file>
         <file>WaitLock.qml</file>
+        <file>common_qml/SelectButton.qml</file>
+        <file>common_qml/TitleBar.qml</file>
+        <file>common_qml/Line.qml</file>
     </qresource>
 </RCC>

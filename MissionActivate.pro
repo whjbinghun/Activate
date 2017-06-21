@@ -51,7 +51,5 @@ SOURCES += main.cpp \
     audit-data.cpp
 
 RESOURCES += qml.qrc \
-    common_qml/common_qml.qrc \
     i18n/i18n.qrc \
     images/images.qrc
-

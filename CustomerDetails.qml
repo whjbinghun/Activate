@@ -28,10 +28,10 @@ Rectangle {
         Rectangle {
             width: n_width
             height: 40
-            border.width: 1
+            //border.width: 1
             gradient: Gradient {    //颜色渐变
-                GradientStop {position: 0.0; color: "lightsteelblue" }
-                GradientStop {position: 1.0; color: "blue" }
+                GradientStop {position: 0.0; color: "#0099FF" }
+                GradientStop {position: 1.0; color: "#0099FF" }
             }
 
             Row {
@@ -49,6 +49,8 @@ Rectangle {
 
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "white"
+                    font.pixelSize: 14
                     text: qsTr("软件激活平台")
                 }
             }

@@ -32,7 +32,7 @@ void Login::send_account( QString str_account, QString str_passwd )
 //向服务器端发送激活信息
 void Login::send_active_info( QString str_active_info )
 {
-
+    Q_UNUSED( str_active_info )
 }
 
 bool Login::get_remember_account()

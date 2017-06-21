@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
+import "common_qml"
 
 /*
  * 单个激活信息
@@ -26,10 +27,9 @@ Rectangle {
         width: n_width
         height: 40
 
-        border.width: 1
         gradient: Gradient {    //颜色渐变
-            GradientStop {position: 0.0; color: "lightsteelblue" }
-            GradientStop {position: 1.0; color: "blue" }
+            GradientStop {position: 0.0; color: "#0099FF" }
+            GradientStop {position: 1.0; color: "#0099FF" }
         }
 
         Row {
@@ -47,6 +47,7 @@ Rectangle {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
+                color: "white"
                 text: qsTr("激活信息")
             }
         }
@@ -79,11 +80,8 @@ Rectangle {
                 }
             }
 
-            Rectangle {
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -103,11 +101,8 @@ Rectangle {
                 }
             }
 
-            Rectangle {
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -126,11 +121,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -149,11 +142,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -172,11 +163,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -195,11 +184,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -218,11 +205,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -243,11 +228,9 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
-            Rectangle {
+
+            Line {
                 width: avtive_info_details.width
-                height: 1
-                border.width: 1
-                color: "blue"
             }
         }
 
@@ -255,19 +238,23 @@ Rectangle {
             id: btn_send
             anchors.left: parent.left
             anchors.leftMargin: 10
-//            anchors.top: parent.top
-//            anchors.topMargin: 10
             anchors.right: parent.right
             anchors.rightMargin: 10
             width: parent.width - 20
             height: 30
-            text: "发送"
             style: ButtonStyle {
+                label: Text {
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "发送"
+                    color: "white"
+                }
+
                 background: Rectangle {
                     radius: 4
                     gradient: Gradient {    //颜色渐变
-                        GradientStop {position: 0.0; color: control.pressed?"#ccc":"lightsteelblue" }
-                        GradientStop {position: 1.0; color: control.pressed?"#aaa":"blue" }
+                        GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
+                        GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }
                     }
                 }
             }
