@@ -4,7 +4,7 @@
 #include "http-encrypt.h"
 #include "http-login.h"
 #include "http-auto-login.h"
-
+#include "http-passwd-modify.h"
 
 HttpClient* HttpClient::m_pInstance = NULL;
 
@@ -41,6 +41,13 @@ void HttpClient::send_account( QString str_account, QString str_passwd, QString 
 void HttpClient::auto_login( QString str_uuid, QString str_seqno, QString str_account, QString str_passwd)
 {
     HttpAutoLogin *p_post = new HttpAutoLogin( str_uuid, str_seqno, str_account, str_passwd );
+    p_post->set_net_manager(m_pManager);
+    p_post->post_request();
+}
+
+void HttpClient::passwd_modify( QString str_uuid, QString str_seqno, QString str_old_passwd, QString str_new_passwd )
+{
+    HttpPasswdModify *p_post = new HttpPasswdModify( str_uuid, str_seqno, str_old_passwd, str_new_passwd );
     p_post->set_net_manager(m_pManager);
     p_post->post_request();
 }

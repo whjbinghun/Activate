@@ -51,6 +51,7 @@ Window {
     }
 
     Column {
+        id: col_title
         Rectangle {
             width: n_width
             height: 40
@@ -73,129 +74,138 @@ Window {
             height: 150
             source: "title.png"
         }
+    }
 
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            spacing: 15
+    Column {
+        anchors.top: col_title.bottom
+        anchors.topMargin: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        spacing: 15
 
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: 20
-                text: qsTr("登录")
-            }
+        Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+            font.pointSize: 20
+            text: qsTr("登录")
+        }
 
-            Row {
-                Rectangle {
-                    width: 50
-                    height: 40
-                    border.width: 1
-                    Image {
-                        anchors.fill: parent
-                        source: "user.png"
-                    }
-                }
-
-                TextField {
-                    id: text_account
-                    width: 245
-                    height: 40
-                    placeholderText: qsTr("邮箱/账号/手机号" )
+        Row {
+            Rectangle {
+                width: 50
+                height: 40
+                border.width: 1
+                Image {
+                    anchors.fill: parent
+                    source: "user.png"
                 }
             }
 
-            Row {
-                Rectangle {
-                    width: 50
-                    height: 40
-                    border.width: 1
-                    Image {
-                        anchors.fill: parent
-                        source: "pwd.png"
-                    }
-                }
+            TextField {
+                id: text_account
+                width: 245
+                height: 40
+//                validator: RegExpValidator {
+//                    regExp: /![\u4e00-\u9fa5]$/
+//                }   //正则表达式
+                placeholderText: qsTr("邮箱/账号/手机号" )
+            }
+        }
 
-                TextField {
-                    id: text_passwd
-                    width: 245
-                    height: 40
-                    placeholderText: qsTr( "请输入密码" )
-                    echoMode: TextInput.Password
+        Row {
+            Rectangle {
+                width: 50
+                height: 40
+                border.width: 1
+                Image {
+                    anchors.fill: parent
+                    source: "pwd.png"
                 }
             }
 
-            Row {
-                spacing: 85
-                CheckBox {
-                    id: box_remember_account
-                    height: 30
-                    text: qsTr("记住登录名")
-
-                    onCheckedChanged: {
-                        login.b_remember_account = checked;
-                    }
-                }
-
-                Button {
-                    height: 30
-                    text: qsTr("忘记密码?")
-                    style: ButtonStyle {
-                        background: Rectangle {
-
-                        }
-                    }
-
-                }
+            TextField {
+                id: text_passwd
+                width: 245
+                height: 40
+                placeholderText: qsTr( "请输入密码" )
+                echoMode: TextInput.Password
             }
+        }
 
-            Label {
-                id: lab_warning
-                width: parent.width
-                height: 35
+        Row {
+            spacing: parent.width - ( box_remember_account.width + btn_forget_passwd.width )
+            CheckBox {
+                id: box_remember_account
+                height: 30
+                text: qsTr("记住登录名")
 
-                text: qsTr("")
-
+                onCheckedChanged: {
+                    login.b_remember_account = checked;
+                }
             }
 
             Button {
-                id: btn_login
-                anchors.left: parent.left
-                width: parent.width
-                height: 35
+                id: btn_forget_passwd
+                height: 30
+                text: qsTr("忘记密码?")
                 style: ButtonStyle {
-                    label: Text {
-                        color: "white"
-                        text: qsTr("登录")
-                    }
-
                     background: Rectangle {
-                        radius: 8
-                        gradient: Gradient {    //颜色渐变
-                            GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
-                            GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }
-                        }
+
                     }
                 }
 
-                onClicked: {
-                    lab_warning.text = ""
+            }
+        }
 
-                    var str_account = text_account.text;
-                    var str_passwd = text_passwd.text;
-                    if( str_account.length == 0 ) {
-                        lab_warning.text = qsTr("账号不能为空！")
-                        return;
-                    }
+        Label {
+            id: lab_warning
+            width: parent.width
+            height: 35
 
-                    if( str_passwd.length == 0 ) {
-                        lab_warning.text = qsTr("账号不能为空！")
-                        return;
-                    }
+            text: qsTr("")
 
-                    login.send_account( str_account, str_passwd );
+        }
+
+        Button {
+            id: btn_login
+            anchors.left: parent.left
+            width: parent.width
+            height: 35
+            style: ButtonStyle {
+                label: Text {
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    color: "white"
+                    text: qsTr("登录")
+                    font.bold: true
                 }
+
+                background: Rectangle {
+                    radius: 8
+                    gradient: Gradient {    //颜色渐变
+                        GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
+                        GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }
+                    }
+                }
+            }
+
+            onClicked: {
+                lab_warning.text = ""
+
+                var str_account = text_account.text;
+                var str_passwd = text_passwd.text;
+                if( str_account.length == 0 ) {
+                    lab_warning.text = qsTr("账号不能为空！")
+                    return;
+                }
+
+                if( str_passwd.length == 0 ) {
+                    lab_warning.text = qsTr("账号不能为空！")
+                    return;
+                }
+
+                login.send_account( str_account, str_passwd );
             }
         }
     }

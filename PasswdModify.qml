@@ -5,6 +5,7 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 
 Rectangle {
+    id: rect_passwd_modify
     anchors.fill: parent
 
     signal sig_return_user_details();
@@ -62,6 +63,10 @@ Rectangle {
                 id: text_cur_passwd
                 width: 200
                 height: 40
+
+                onTextChanged: {
+                    btn_sure.enabled = btn_enabled()
+                }
             }
 
             Label {
@@ -73,6 +78,10 @@ Rectangle {
                 id: text_new_passwd
                 width: 200
                 height: 40
+
+                onTextChanged: {
+                    btn_sure.enabled = btn_enabled()
+                }
             }
 
             Label {
@@ -84,6 +93,10 @@ Rectangle {
                 id: text_sure_new_passwd
                 width: 200
                 height: 40
+
+                onTextChanged: {
+                    btn_sure.enabled = btn_enabled()
+                }
             }
         }
 
@@ -93,8 +106,10 @@ Rectangle {
         }
 
         Button {
+            id: btn_sure
             width: parent.width
             height: 30
+            enabled: false
             style: ButtonStyle {
                 label: Text {   //定制按钮的文本
                     horizontalAlignment: Text.AlignHCenter
@@ -110,6 +125,20 @@ Rectangle {
                     }
                 }
             }
+
+            onClicked: {
+                if( text_new_passwd.text !== text_sure_new_passwd.text ) {
+                    dlg_passwd.visible = true
+                    dlg_passwd.text = "新密码与确认密码不同，请重新输入"
+                    btn_sure.enabled = false
+                    time_close_dlg.start()
+                    return
+                }
+
+                login.send_passwd_modify( text_cur_passwd.text, text_new_passwd.text );
+                btn_sure.enabled = false
+                time_close_dlg.start()
+            }
         }
     }
 
@@ -117,5 +146,43 @@ Rectangle {
         text_cur_passwd.text = ""
         text_new_passwd.text = ""
         text_sure_new_passwd.text = ""
+        text_cur_passwd.focus = true
+    }
+
+    function btn_enabled() {
+        if( text_cur_passwd.text.length == 0 ) return false
+        if( text_new_passwd.text.length == 0 ) return false
+        if( text_sure_new_passwd.text.length == 0 ) return false
+
+        return true
+    }
+
+    Timer {
+        id: time_close_dlg
+
+        interval: 1000*5
+        //running: true
+        //repeat: true
+        onTriggered: {
+            time_close_dlg.stop()
+            dlg_passwd.visible = false
+            init_info()
+        }
+    }
+
+    Dialog {
+        id: dlg_passwd
+
+        title: "提示"
+        visible: false
+        property string text: ""
+        contentItem: Rectangle {
+            implicitWidth: 400
+            implicitHeight: 100
+            Text {
+                anchors.centerIn: parent
+                text: dlg_passwd.text
+            }
+        }
     }
 }

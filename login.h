@@ -19,6 +19,7 @@ public:
     Q_INVOKABLE void init_ctrl();
     Q_INVOKABLE void send_account( QString str_account, QString str_passwd );
     Q_INVOKABLE void send_active_info( QString str_active_info );
+    Q_INVOKABLE void send_passwd_modify( QString str_old_passwd, QString str_new_passwd );
     bool get_remember_account();
     void set_remember_account( bool b_remember_account );
     Q_INVOKABLE void clear_user_info();

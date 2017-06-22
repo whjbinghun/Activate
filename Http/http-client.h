@@ -15,6 +15,7 @@ public:
     void send_passwd_encrypt( QString str_passwd );
     void send_account( QString str_account, QString str_passwd, QString str_salt );
     void auto_login(QString str_uuid, QString str_seqno, QString str_account, QString str_passwd);
+    void passwd_modify( QString str_uuid, QString str_seqno, QString str_old_passwd, QString str_new_passwd );
 private:
     explicit HttpClient(QObject *parent=NULL);
 

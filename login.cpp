@@ -35,6 +35,11 @@ void Login::send_active_info( QString str_active_info )
     Q_UNUSED( str_active_info )
 }
 
+void Login::send_passwd_modify( QString str_old_passwd, QString str_new_passwd )
+{
+
+}
+
 bool Login::get_remember_account()
 {
     return mb_remember_account;

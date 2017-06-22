@@ -34,7 +34,8 @@ HEADERS += \
     Http/http-struct.h \
     Http/http-auto-login.h \
     Http/http-api.h \
-    audit-data.h
+    audit-data.h \
+    Http/http-passwd-modify.h
 
 SOURCES += main.cpp \
     login.cpp \
@@ -48,8 +49,27 @@ SOURCES += main.cpp \
     Http/http-encrypt.cpp \
     Http/http-signal.cpp \
     Http/http-auto-login.cpp \
-    audit-data.cpp
+    audit-data.cpp \
+    Http/http-passwd-modify.cpp
 
 RESOURCES += qml.qrc \
     i18n/i18n.qrc \
     images/images.qrc
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
