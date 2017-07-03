@@ -2,22 +2,18 @@
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 import QtQuick.Dialogs 1.2
-import QtQuick.Window 2.0
+import QtQuick.Window 2.2
 import QtQuick.Layouts 1.1
 
 Window {
     id: login_page
     title: qsTr( "软件激活平台" )
-
-    property int n_width: 320
-    property int n_height: 580
-
-    width: n_width
-    height: n_height
-
+    //visibility: Window.Maximized
     visible: true
     modality: Qt.ApplicationModal
     //flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
+
+    property int gn_single_height: height/12
 
      Component.onCompleted: {
          lab_warning.text = ""
@@ -47,15 +43,15 @@ Window {
 
         onSig_show_login: {
             login_page.visible = b_show;
+            login_page.visibility = Window.Maximized
         }
     }
 
     Column {
         id: col_title
         Rectangle {
-            width: n_width
-            height: 40
-            //color: Qt.blue//"#0099FFFF"
+            width: login_page.width
+            height: gn_single_height
             gradient: Gradient {    //颜色渐变
                 GradientStop {position: 0.0; color: "#0099FF" }
                 GradientStop {position: 1.0; color: "#0099FF" }
@@ -70,8 +66,8 @@ Window {
             }
         }
         Image {
-            width: n_width
-            height: 150
+            width: login_page.width
+            height: gn_single_height*3
             source: "title.png"
         }
     }
@@ -80,10 +76,10 @@ Window {
         anchors.top: col_title.bottom
         anchors.topMargin: 20
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: 20
         anchors.right: parent.right
-        anchors.rightMargin: 10
-        spacing: 15
+        anchors.rightMargin: 20
+        spacing: 20
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -92,9 +88,11 @@ Window {
         }
 
         Row {
+            width: parent.width
             Rectangle {
-                width: 50
-                height: 40
+                id: rect_user
+                width: gn_single_height
+                height: gn_single_height
                 border.width: 1
                 Image {
                     anchors.fill: parent
@@ -104,19 +102,24 @@ Window {
 
             TextField {
                 id: text_account
-                width: 245
-                height: 40
+                width: parent.width - rect_user.width
+                height: gn_single_height
 //                validator: RegExpValidator {
 //                    regExp: /![\u4e00-\u9fa5]$/
 //                }   //正则表达式
                 placeholderText: qsTr("邮箱/账号/手机号" )
+                style: TextFieldStyle {
+                    background: Rectangle {
+                        border.width: 1
+                    }
+                }
             }
         }
 
         Row {
             Rectangle {
-                width: 50
-                height: 40
+                width: gn_single_height
+                height: gn_single_height
                 border.width: 1
                 Image {
                     anchors.fill: parent
@@ -126,10 +129,15 @@ Window {
 
             TextField {
                 id: text_passwd
-                width: 245
-                height: 40
+                width: text_account.width
+                height: gn_single_height
                 placeholderText: qsTr( "请输入密码" )
                 echoMode: TextInput.Password
+                style: TextFieldStyle {
+                    background: Rectangle {
+                        border.width: 1
+                    }
+                }
             }
         }
 
@@ -137,7 +145,7 @@ Window {
             spacing: parent.width - ( box_remember_account.width + btn_forget_passwd.width )
             CheckBox {
                 id: box_remember_account
-                height: 30
+                height: gn_single_height
                 text: qsTr("记住登录名")
 
                 onCheckedChanged: {
@@ -147,7 +155,7 @@ Window {
 
             Button {
                 id: btn_forget_passwd
-                height: 30
+                height: gn_single_height
                 text: qsTr("忘记密码?")
                 style: ButtonStyle {
                     background: Rectangle {
@@ -161,7 +169,7 @@ Window {
         Label {
             id: lab_warning
             width: parent.width
-            height: 35
+            height: gn_single_height
 
             text: qsTr("")
 
@@ -171,7 +179,7 @@ Window {
             id: btn_login
             anchors.left: parent.left
             width: parent.width
-            height: 35
+            height: gn_single_height
             style: ButtonStyle {
                 label: Text {
                     horizontalAlignment: Text.AlignHCenter
@@ -182,7 +190,7 @@ Window {
                 }
 
                 background: Rectangle {
-                    radius: 8
+                    radius: gn_single_height/5
                     gradient: Gradient {    //颜色渐变
                         GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
                         GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }

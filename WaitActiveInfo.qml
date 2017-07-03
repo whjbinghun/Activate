@@ -16,12 +16,13 @@ Window {
     visible: false
     modality: Qt.WindowModal
 
+    property int gn_single_height: parent.height/12
     signal sig_show_wait_active_wnd()
 
     Column {
         Rectangle {
-            width: n_width
-            height: 40
+            width: wnd_wait_active_info.width
+            height: gn_single_height
             border.width: 1
             gradient: Gradient {    //颜色渐变
                 GradientStop {position: 0.0; color: "#0099FF" }
@@ -119,14 +120,17 @@ Window {
                         spacing: 10
 
                         Button {
+                            height: gn_single_height
                             text: "审批"
                         }
 
                         Button {
+                            height: gn_single_height
                             text: "生成并发送"
                         }
 
                         Button {
+                            height: gn_single_height
                             text: "拒绝"
                         }
 
@@ -141,7 +145,7 @@ Window {
 
         ListView {
             anchors.fill: parent
-            anchors.topMargin: 40
+            anchors.topMargin: gn_single_height
             model: list_wait_active_info
             delegate: contactDelegate
             //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }

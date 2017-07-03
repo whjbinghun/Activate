@@ -13,6 +13,7 @@ Rectangle {
     id: rct_scan_code
     anchors.fill: parent
 
+    property int gn_single_height: parent.height/12
     signal sig_qrCode_return()
 
     property string qr_text: qsTr("")   //二维码内容
@@ -24,8 +25,8 @@ Rectangle {
     Column {
         anchors.fill: parent
         Rectangle {
-            width: n_width
-            height: 40
+            width: parent.width
+            height: gn_single_height
 
             gradient: Gradient {    //颜色渐变
                 GradientStop {position: 0.0; color: "#0099FF" }
@@ -57,7 +58,7 @@ Rectangle {
 
         JQQRCodeReader {
             id: qr_code_reader
-            height: parent.height - 40
+            height: parent.height - gn_single_height
 
             onTagFound: {
                 qr_text = tag;

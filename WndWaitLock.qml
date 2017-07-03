@@ -16,12 +16,13 @@ Window {
     modality: Qt.WindowModal
     flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
 
+    property int gn_single_height: wnd_wait_active.height/12
     signal sig_show_wait_lock_wnd()
 
     Column {
         Rectangle {
             width: n_width
-            height: 40
+            height: gn_single_height
             border.width: 1
             gradient: Gradient {    //颜色渐变
                 GradientStop {position: 0.0; color: "#0099FF" }

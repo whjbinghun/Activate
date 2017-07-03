@@ -12,6 +12,8 @@ class Login : public QObject
     Q_PROPERTY( QString str_account READ get_login_account WRITE set_login_account )
     Q_PROPERTY( QString str_passwd READ get_login_passwd WRITE set_login_passwd )
     Q_PROPERTY( QString str_username READ get_username WRITE set_username )
+    Q_PROPERTY( int n_screen_width READ get_screen_width )
+    Q_PROPERTY( int n_screen_height READ get_screen_height )
 public:
     explicit Login(QObject *parent = 0);
     ~Login();
@@ -20,6 +22,8 @@ public:
     Q_INVOKABLE void send_account( QString str_account, QString str_passwd );
     Q_INVOKABLE void send_active_info( QString str_active_info );
     Q_INVOKABLE void send_passwd_modify( QString str_old_passwd, QString str_new_passwd );
+    Q_INVOKABLE int get_screen_width();
+    Q_INVOKABLE int get_screen_height();
     bool get_remember_account();
     void set_remember_account( bool b_remember_account );
     Q_INVOKABLE void clear_user_info();
@@ -29,6 +33,7 @@ public:
     void set_login_passwd( QString str_passwd );
     QString get_username();
     void set_username( QString str_username );
+    void set_screen_size( QSize size_screen );
 
     Q_INVOKABLE void show_login( bool b_show );
 signals:
@@ -49,6 +54,9 @@ private:
     QString ms_account;//账号
     QString ms_passwd;
     QString ms_username;//用户名
+
+    int mn_screen_width;
+    int mn_screen_height;
 };
 
 #endif // LOGIN_H

@@ -7,18 +7,14 @@ import "common_qml"
 
 Rectangle {
     id: avtive_info_details
+    anchors.fill: parent
 
-    property int n_width: 320
-    property int n_height: 580
-    property int gn_lab_height: 40
-
-    width: n_width
-    height: n_height
+    property int gn_single_height: parent.height/12
 
     Rectangle {
         id: rct_title
-        width: n_width
-        height: 40
+        width: parent.width
+        height: gn_single_height
 
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -30,7 +26,7 @@ Rectangle {
 
             Button {
                 //iconSource:
-                height: 40
+                height: gn_single_height
                 opacity: 0
 
                 onClicked: {
@@ -47,6 +43,7 @@ Rectangle {
     }
 
     Column {
+        id: col_content
         anchors.top: rct_title.bottom
         anchors.topMargin: 5
         anchors.left: parent.left
@@ -59,13 +56,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                     text: "软件名称："
                 }
                 Text {
                     id: lab_soft_name
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.Wrap
                 }
@@ -81,13 +78,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     text: "软件版本："
                     verticalAlignment: Text.AlignVCenter
                 }
                 Label {
                     id: lab_soft_version
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -102,13 +99,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     text: "机器序列码："
                     verticalAlignment: Text.AlignVCenter
                 }
                 Label { //序列号
                     id: lab_serial_num
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -123,13 +120,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     text: "公司单位名："
                     verticalAlignment: Text.AlignVCenter
                 }
                 Label {
                     id: lab_company_name
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -144,13 +141,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     text: "用户名称："
                     verticalAlignment: Text.AlignVCenter
                 }
                 Label {
                     id: lab_user_name
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -165,13 +162,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     text: "申请单位："
                     verticalAlignment: Text.AlignVCenter
                 }
                 Label { //申请单位
                     id: lab_apply_unit
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -186,13 +183,13 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                     text: "申请人名称："
                 }
                 Label {
                     id: lab_applicant_name
-                    height: gn_lab_height
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -208,14 +205,15 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
-                    height: gn_lab_height
+                    id: lab_remarks
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                     text: "备注："
                 }
-                TextField {
+                Label {
                     id: text_remarks
-                    width: 200
-                    height: gn_lab_height
+                    width: col_content.width - lab_remarks.width - 30
+                    height: gn_single_height
                     verticalAlignment: Text.AlignVCenter
                 }
             }

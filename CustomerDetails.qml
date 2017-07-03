@@ -9,12 +9,9 @@ import QtQuick.Layouts 1.1
 Rectangle {
     id: customer_details
 
-    property int n_width: 320
-    property int n_height: 580
+    anchors.fill: parent
 
-    width: n_width
-    height: n_height
-
+    property int gn_single_height: parent.height/12
     signal sig_return_customer()
     signal sig_return_login()
     signal sig_quit()
@@ -25,9 +22,14 @@ Rectangle {
 
     Column {
         id: column_title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: gn_single_height + image_title.height
+
         Rectangle {
-            width: n_width
-            height: 40
+            width: parent.width
+            height: gn_single_height
             //border.width: 1
             gradient: Gradient {    //颜色渐变
                 GradientStop {position: 0.0; color: "#0099FF" }
@@ -39,7 +41,7 @@ Rectangle {
 
                 Button {
                     //iconSource:
-                    height: 40
+                    height: gn_single_height
                     opacity: 0
 
                     onClicked: {
@@ -50,7 +52,7 @@ Rectangle {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     color: "white"
-                    font.pixelSize: 14
+                    font.pointSize: 14
                     text: qsTr("软件激活平台")
                 }
             }
@@ -58,8 +60,8 @@ Rectangle {
 
         Image {
             id: image_title
-            width: n_width
-            height: 150
+            width: parent.width
+            height: gn_single_height*3
             source: "title.png"
         }
     }
@@ -71,37 +73,47 @@ Rectangle {
         anchors.rightMargin: 10
         anchors.top: column_title.bottom
         anchors.topMargin: 20
-        spacing: 20
+        spacing: gn_single_height/2
 
         Row {
             Label {
                 text: qsTr(" 姓名")
+                font.pointSize: 16
             }
 
             Text {
                 id: txt_user_name
+                font.pointSize: 16
             }
         }
 
         Row {
             Label {
                 text: qsTr(" 部门")
+                font.pointSize: 16
             }
             Text {
                 id: txt_dep_name
+                font.pointSize: 16
             }
         }
         Row {
             Label {
                 text: qsTr(" 账号")
+                font.pointSize: 16
             }
             Text {
                 id: txt_account
+                font.pointSize: 16
             }
         }
         Button {
-            text: qsTr("登录密码修改")
             style: ButtonStyle {
+                label: Text {
+                    text: qsTr("登录密码修改")
+                    font.pointSize: 16
+                }
+
                 background: Rectangle {
 
                 }
@@ -113,8 +125,11 @@ Rectangle {
             }
         }
         Button {
-            text: qsTr("账号切换")
             style: ButtonStyle {
+                label: Text {
+                    text: qsTr("账号切换")
+                    font.pointSize: 16
+                }
                 background: Rectangle {
 
                 }
@@ -125,8 +140,11 @@ Rectangle {
             }
         }
         Button {
-            text: qsTr("退出")
             style: ButtonStyle {
+                label: Text {
+                    text: qsTr("退出")
+                    font.pointSize: 16
+                }
                 background: Rectangle {
 
                 }

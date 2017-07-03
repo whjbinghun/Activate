@@ -1,4 +1,4 @@
-﻿import QtQuick.Window 2.0
+﻿import QtQuick.Window 2.2
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
@@ -8,16 +8,12 @@ import QtQuick.Layouts 1.1
 Window {
     id: wnd_user_info
     title: qsTr( "软件激活平台" )
+    //visibility: Window.Maximized
     visible: false
-
-    property int n_width: 320
-    property int n_height: 580
-
-    width: n_width
-    height: n_height
+    width: Screen.desktopAvailableWidth
+    height: Screen.desktopAvailableHeight
 
     modality: Qt.ApplicationModal
-    //flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
 
     /*
      *  客户显示界面
@@ -69,5 +65,4 @@ Window {
             wnd_user_info.close()
         }
     }
-
 }

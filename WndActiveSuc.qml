@@ -17,12 +17,13 @@ Window {
     width: 300
     flags: Qt.MSWindowsFixedSizeDialogHint | Qt.WindowCloseButtonHint
 
+    property int gn_single_height: parent.height/12
     signal sig_show_wait_active_wnd()
 
     Rectangle {
         id: rect_title
         width: parent.width
-        height: 40
+        height: gn_single_height
         border.width: 1
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -79,6 +80,7 @@ Window {
             Button {
                 id: btn_close
                 width: wnd_wait_active.width/2
+                height: gn_single_height
                 text: qsTr( "关闭" )
                 onClicked: {
                     wnd_wait_active.visible = false
@@ -88,6 +90,7 @@ Window {
             Button {
                 id: btn_see
                 width: wnd_wait_active.width - wnd_wait_active.width/2
+                height: gn_single_height
                 text: qsTr( "查看" )
                 onClicked: {
 //                    wnd_wait_active.visible = false

@@ -11,11 +11,12 @@ Rectangle {
     id: active_info_list
     anchors.fill: parent
 
+    property int gn_single_height: parent.height/12
     signal sig_return_customer()
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
 
-    }
+//    }
 
     /*
      * title
@@ -23,7 +24,7 @@ Rectangle {
     Rectangle {
         id: rct_title
         width: parent.width
-        height: 40
+        height: gn_single_height
         z: 5
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -34,8 +35,8 @@ Rectangle {
             anchors.fill: parent
             spacing: 10
             Button {
-                width: 40
-                height: 40
+                width: gn_single_height
+                height: gn_single_height
                 opacity: 0.1
                 //iconSource:
                 onClicked: {
@@ -57,7 +58,7 @@ Rectangle {
         anchors.top: rct_title.bottom
         anchors.left: parent.left
         anchors.leftMargin: 10
-        height: 40
+        height: gn_single_height
         z: 5
         style: ButtonStyle {
             background: Rectangle {
@@ -79,7 +80,7 @@ Rectangle {
         anchors.fill: parent
         anchors.leftMargin: 10
         anchors.rightMargin: 10
-        anchors.topMargin: 80
+        anchors.topMargin: gn_single_height*2
         z: 1
     }
 

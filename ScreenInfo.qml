@@ -12,7 +12,8 @@ Rectangle {
     id: rct_screen_info
     //anchors.fill: parent
 
-    property int gn_btn_height: 30
+
+    property int gn_single_height: parent.height/12
 
     Component.onCompleted: {
         //如果用户为销售人员
@@ -28,7 +29,7 @@ Rectangle {
         id: contactDelegate
         Item {
             anchors.top: parent.top
-            anchors.topMargin: 20
+            anchors.topMargin: gn_single_height/2
             anchors.left: parent.left
             anchors.leftMargin: 5
             anchors.right: parent.right
@@ -41,6 +42,7 @@ Rectangle {
                 id: sender_list
                 text: str_sender
                 visible: false
+                gn_single_height: rct_screen_info.gn_single_height
                 //value: sender_value
             }
 
@@ -49,13 +51,14 @@ Rectangle {
                 anchors.top: (sender_list.visible?sender_list.bottom:parent.top)
                 text: str_approver
                 visible: false
+                gn_single_height: rct_screen_info.gn_single_height
                 //value: approver_value
             }
 
             Column {
                 id: col_time
                 anchors.top: approver_info_list.bottom
-                anchors.topMargin: 20
+                anchors.topMargin: gn_single_height/2
                 spacing: 5
                 Text {
                     text: qsTr( "时间排序")
@@ -76,7 +79,7 @@ Rectangle {
             Column {
                 id: col_lock
                 anchors.top: col_time.bottom
-                anchors.topMargin: 20
+                anchors.topMargin: gn_single_height/2
                 spacing: 5
                 Text {
                     text: qsTr( "是否锁定" )
@@ -103,6 +106,7 @@ Rectangle {
     ListView {
         id: list_view
         anchors.fill: parent
+        anchors.bottomMargin: gn_single_height
 
         model: list_screen_info
         delegate: contactDelegate
@@ -118,13 +122,13 @@ Rectangle {
         z: 10
         Button {
             width: parent.width/2
-            height: gn_btn_height
+            height: gn_single_height
             text: qsTr( "重置" )
         }
 
         Button {
             width: parent.width - parent.width/2
-            height: gn_btn_height
+            height: gn_single_height
             text: qsTr( "完成" )
         }
     }

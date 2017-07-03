@@ -8,12 +8,13 @@ Rectangle {
     id: rect_passwd_modify
     anchors.fill: parent
 
+    property int gn_single_height: parent.height/12
     signal sig_return_user_details();
 
     Rectangle {
         id: rect_title
-        width: n_width
-        height: 40
+        width: parent.width
+        height: gn_single_height
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
             GradientStop {position: 1.0; color: "#0099FF" }
@@ -23,7 +24,7 @@ Rectangle {
             spacing: 10
             Button {
                 //iconSource:
-                height: 40
+                height: gn_single_height
                 opacity: 0
 
                 onClicked: {
@@ -41,28 +42,34 @@ Rectangle {
 
     Column {
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: 20
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: 20
         anchors.top: rect_title.bottom
         anchors.topMargin: 20
 
-        spacing: 30
+        spacing: gn_single_height/2
 
         Grid {
+            width: parent.width
             rows: 3
             columns: 2
             spacing: 20
 
             Label {
-                height: 40
+                height: gn_single_height
                 text: qsTr("当前密码：")
                 verticalAlignment: Text.AlignVCenter
             }
             TextField {
                 id: text_cur_passwd
-                width: 200
-                height: 40
+                width: parent.width - 20 - lab_new_passwd.width
+                height: gn_single_height
+                style: TextFieldStyle {
+                    background: Rectangle {
+                        border.width: 1
+                    }
+                }
 
                 onTextChanged: {
                     btn_sure.enabled = btn_enabled()
@@ -70,14 +77,20 @@ Rectangle {
             }
 
             Label {
-                height: 40
+                height: gn_single_height
                 text: qsTr("新密码：")
                 verticalAlignment: Text.AlignVCenter
             }
             TextField {
                 id: text_new_passwd
-                width: 200
-                height: 40
+                width: text_cur_passwd.width
+                height: gn_single_height
+
+                style: TextFieldStyle {
+                    background: Rectangle {
+                        border.width: 1
+                    }
+                }
 
                 onTextChanged: {
                     btn_sure.enabled = btn_enabled()
@@ -85,14 +98,21 @@ Rectangle {
             }
 
             Label {
-                height: 40
+                id: lab_new_passwd
+                height: gn_single_height
                 text: qsTr("确认新密码：")
                 verticalAlignment: Text.AlignVCenter
             }
             TextField {
                 id: text_sure_new_passwd
-                width: 200
-                height: 40
+                width: text_cur_passwd.width
+                height: gn_single_height
+
+                style: TextFieldStyle {
+                    background: Rectangle {
+                        border.width: 1
+                    }
+                }
 
                 onTextChanged: {
                     btn_sure.enabled = btn_enabled()
@@ -108,7 +128,7 @@ Rectangle {
         Button {
             id: btn_sure
             width: parent.width
-            height: 30
+            height: gn_single_height
             enabled: false
             style: ButtonStyle {
                 label: Text {   //定制按钮的文本
@@ -118,7 +138,7 @@ Rectangle {
                     color: "white"
                 }
                 background: Rectangle {
-                    radius: 4
+                    radius: gn_single_height/5
                     gradient: Gradient {    //颜色渐变
                         GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
                         GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }

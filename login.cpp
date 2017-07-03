@@ -12,6 +12,8 @@ Login::Login(QObject *parent)
     , ms_account( "" )
     , ms_passwd( "" )
     , ms_username( "" )
+    , mn_screen_width( 320 )
+    , mn_screen_height( 580 )
 {
     //init_ctrl();
     init_connect();
@@ -38,6 +40,16 @@ void Login::send_active_info( QString str_active_info )
 void Login::send_passwd_modify( QString str_old_passwd, QString str_new_passwd )
 {
 
+}
+
+int Login::get_screen_width()
+{
+    return mn_screen_width;
+}
+
+int Login::get_screen_height()
+{
+    return mn_screen_height;
 }
 
 bool Login::get_remember_account()
@@ -89,6 +101,12 @@ QString Login::get_username()
 void Login::set_username(QString str_username)
 {
     ms_username = str_username;
+}
+
+void Login::set_screen_size( QSize size_screen )
+{
+    mn_screen_width = size_screen.width();
+    mn_screen_height = size_screen.height();
 }
 
 void Login::show_login( bool b_show )

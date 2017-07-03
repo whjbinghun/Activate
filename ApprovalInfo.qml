@@ -15,6 +15,7 @@ Rectangle {
 
 
     property int n_status: 1
+    property int gn_single_height: parent.height/12
 
     Component.onCompleted: {
         n_status = 1
@@ -31,7 +32,7 @@ Rectangle {
      */
     Rectangle {
         width: parent.width
-        height: 40
+        height: gn_single_height
         //color: Qt.blue//"#0099FFFF"
         z: 50
         gradient: Gradient {    //颜色渐变
@@ -43,8 +44,8 @@ Rectangle {
             anchors.fill: parent
             spacing: 10
             Button {
-                width: 40
-                height: 40
+                width: gn_single_height
+                height: gn_single_height
 
                 //iconSource:
                 onClicked: {
@@ -65,12 +66,12 @@ Rectangle {
      */
     Row {
         anchors.fill: parent
-        anchors.topMargin: 40
+        anchors.topMargin: gn_single_height
         z: 50
 
         Button {
             width: parent.width/3
-            height: 30
+            height: gn_single_height
             //iconSource:
             style: ButtonStyle {
                 label: Text {
@@ -82,7 +83,7 @@ Rectangle {
 
                 background: Rectangle {
                     border.width: 1
-                    radius: 4
+                    radius: gn_single_height/5
                 }
             }
 
@@ -97,7 +98,7 @@ Rectangle {
 
         Button {
             width: parent.width/3
-            height: 30
+            height: gn_single_height
             //iconSource:
             style: ButtonStyle {
                 label: Text {
@@ -109,7 +110,7 @@ Rectangle {
 
                 background: Rectangle {
                     border.width: 1
-                    radius: 4
+                    radius: gn_single_height/5
                 }
             }
 
@@ -125,7 +126,7 @@ Rectangle {
 
         Button {
             width: parent.width - parent.width*2/3
-            height: 30
+            height: gn_single_height
             //iconSource:
             style: ButtonStyle {
                 label: Text {
@@ -137,7 +138,7 @@ Rectangle {
 
                 background: Rectangle {
                     border.width: 1
-                    radius: 4
+                    radius: gn_single_height/5
                 }
             }
             onClicked: {
@@ -157,7 +158,7 @@ Rectangle {
         id: pending_audit
         visible: true
         anchors.fill: parent
-        anchors.topMargin: 80
+        anchors.topMargin: gn_single_height*2
         z: 1
     }
 
@@ -168,7 +169,7 @@ Rectangle {
         id: audited
         visible: false
         anchors.fill: parent
-        anchors.topMargin: 80
+        anchors.topMargin: gn_single_height*2
         z: 1
     }
 
@@ -179,7 +180,7 @@ Rectangle {
         id: refuse
         visible: false
         anchors.fill: parent
-        anchors.topMargin: 80
+        anchors.topMargin: gn_single_height*2
         z: 1
     }
 

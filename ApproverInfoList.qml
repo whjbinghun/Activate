@@ -14,13 +14,13 @@ Rectangle {
 
     property string text
     property int value
-    property int gn_btn_height: 30
+    property int gn_single_height: 0
 
     Text {
         id: text_approver
         anchors.top: parent.top
-        anchors.topMargin: 20
-        height: 20
+        anchors.topMargin: gn_single_height/2
+        height: gn_single_height/2
         text: qsTr( "审批人" )
     }
 
@@ -28,7 +28,7 @@ Rectangle {
         id: contactDelegate
         Item {
             width: rct_approver_list.width
-            height: 30
+            height: gn_single_height
             Row {
                 id: row_approver
                 spacing: 20
@@ -61,7 +61,7 @@ Rectangle {
         height: parent.height - text_approver.x - text_approver.height
         model: list_active_info
         delegate: contactDelegate
-        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+        //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
     }
 
@@ -86,9 +86,9 @@ Rectangle {
                 list_active_info.append( {"user_name_1": strList[n_len_row*3], "user_name_2":strList[n_len_row*3+1], "user_name_3":"" } )
             }
 
-            var n_height = n_len_row * gn_btn_height + (n_len_leave > 0 ? gn_btn_height:0)
+            var n_height = n_len_row * gn_single_height + (n_len_leave > 0 ? gn_single_height:0)
 
-            height = n_height + gn_btn_height
+            height = n_height + gn_single_height
         }
     }
 }

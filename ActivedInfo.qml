@@ -13,6 +13,8 @@ Rectangle {
     width: parent.width
     height: parent.height
 
+    property int gn_single_height: parent.height/12
+
     Component.onCompleted: {
         list_active_info.clear()
         var n_length = audit_data.get_audit_length()
@@ -44,21 +46,21 @@ Rectangle {
                     Text {
                         id: text_status
                         text: status
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                     Text {
                         id: text_date
                         text: date
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                 }
                 Text {
                     text: '<b>发送人:</b> ' + username + '(' + department + ')'
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
                 Text {
                     text: '<b>审批人:</b> ' + approver + '(' + department + ')'
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
 
                 Row {
@@ -66,7 +68,7 @@ Rectangle {
                     Text {
                         id: text_eff_days
                         text: '<b>剩余有效天数:</b> ' + effective_days +'天'
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
 
                     Button {
@@ -94,20 +96,20 @@ Rectangle {
 
                 Text {
                     text: '<b>现场设备录入系统</b>'
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
                 Text {
                     text: soft_name
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
 
                 Text {
                     text: '<b>机器序列码:</b> ' + serial_no
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
                 Text {
                     text: '<b>激活码:</b> ' + activation_code
-                    font.pixelSize: 14
+                    font.pointSize: 14
                 }
 
                 Line {
@@ -138,13 +140,13 @@ Rectangle {
         //standardButtons: StandardButton.Ok | StandardButton.Cancel
         contentItem: Rectangle {
             //color: "lightskyblue"
-            implicitWidth: 300
-            implicitHeight: 150
+            implicitWidth: rct_active.width/2
+            implicitHeight: rct_active.height/2
 
             Column {
                 anchors.fill: parent
-                anchors.topMargin: 30
-                spacing: 20
+                anchors.topMargin: gn_single_height
+                spacing: gn_single_height/2
                 Text {
                     text: "<b>是否锁定激活码？</b>"
                     color: "navy"
@@ -160,10 +162,10 @@ Rectangle {
                 Row {
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    height: 30
+                    height: gn_single_height
                     Button {
                         width: parent.width/2
-                        height: 30
+                        height: gn_single_height
                         style: ButtonStyle {
                             label: Text {
                                 color: "blue"
@@ -189,7 +191,7 @@ Rectangle {
 
                     Button {
                         width: parent.width - parent.width/2
-                        height: 30
+                        height: gn_single_height
                         style: ButtonStyle {
                             label: Text {
                                 color: "blue"

@@ -8,13 +8,15 @@ Rectangle {
     anchors.fill: parent
 
     property alias user_info_text: txt_user_info.text
+    property int gn_single_height: parent.height/12
     signal sig_clicked_user()
     signal sig_return_login()
     signal sig_quit()
 
     Rectangle {
-        width: n_width
-        height: 40
+        id: rect_title
+        width: parent.width
+        height: gn_single_height
         //border.width: 1
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -33,21 +35,22 @@ Rectangle {
     Rectangle {
         id: rct_content
         anchors.fill: parent
-        anchors.topMargin: 40
+        anchors.topMargin: gn_single_height
         Column {
+            anchors.fill: parent
             Rectangle {
-                width: n_width
-                height: 150
+                width: parent.width
+                height: gn_single_height*4
 
                 Column {
                     anchors.fill: parent
                     Image {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        width: 60
-                        height: 60
+                        width: parent.width/3
+                        height: parent.width/3
                         source: "user.png"
-                        sourceSize.width: 60
-                        sourceSize.height: 60
+//                        sourceSize.width: 60
+//                        sourceSize.height: 60
 
                         MouseArea {
                             anchors.fill: parent
@@ -61,6 +64,7 @@ Rectangle {
                         width: parent.width
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("")
+                        font.pointSize: 16
                     }
                 }
             }
@@ -71,53 +75,91 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.rightMargin: 10
                 spacing: 20
-                Button {
-                    id: scan_qr
-                    height: 40
-                    iconSource: "qr.jpg"
-                    text: qsTr(" 扫描二维码")
-                    style: ButtonStyle {
-                        background: Rectangle {
-                            border.width: 0
+
+                Rectangle {
+                    width: scan_qr.width + text_qr.width
+                    height: gn_single_height
+                    Row {
+                        Image {
+                            id: scan_qr
+                            width: gn_single_height
+                            height: gn_single_height
+                            source: "qr.jpg"
+                        }
+                        Text {
+                            id: text_qr
+                            height: gn_single_height
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            text: qsTr( "扫描二维码" )
+                            font.pointSize: 20
                         }
                     }
 
-                    onClicked: {
-                        rct_content.visible = false
-                        scan_code.visible = true;
-                    }
-
-                }
-                Button {
-                    id: approve_info
-                    height: 40
-                    text: qsTr(" 审批信息")
-                    iconSource: "dep_info.png"
-                    style: ButtonStyle {
-                        background: Rectangle {
-                            border.width: 0
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            rct_content.visible = false
+                            scan_code.visible = true
                         }
-                    }
-
-                    onClicked: {
-                        rct_content.visible = false
-                        approval_info.visible = true
                     }
                 }
-                Button {
-                    id: active_list
-                    height: 40
-                    text: qsTr(" 激活列表")
-                    iconSource: "active.png"
-                    style: ButtonStyle {
-                        background: Rectangle {
-                            border.width: 0
+
+                Rectangle {
+                    width: approve_info.width + text_approve_info.width
+                    height: gn_single_height
+                    Row {
+                        Image {
+                            id: approve_info
+                            width: gn_single_height
+                            height: gn_single_height
+                            source: "dep_info.png"
+                        }
+                        Text {
+                            id: text_approve_info
+                            height: gn_single_height
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            text: qsTr(" 审批信息")
+                            font.pointSize: 20
                         }
                     }
 
-                    onClicked: {
-                        rct_content.visible = false
-                        active_info_list.visible = true
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            rct_content.visible = false
+                            approval_info.visible = true
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: active_list.width + text_active_list.width
+                    height: gn_single_height
+                    Row {
+                        Image {
+                            id: active_list
+                            width: gn_single_height
+                            height: gn_single_height
+                            source: "active.png"
+                        }
+                        Text {
+                            id: text_active_list
+                            height: gn_single_height
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            text: qsTr(" 激活列表")
+                            font.pointSize: 20
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            rct_content.visible = false
+                            active_info_list.visible = true
+                        }
                     }
                 }
             }

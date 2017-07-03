@@ -50,38 +50,38 @@ Rectangle {
                         Text {
                             id: text_status
                             text: status
-                            font.pixelSize: 14
+                            font.pointSize: 14
                         }
                         Text {
                             id: text_date
                             text: date
-                            font.pixelSize: 14
+                            font.pointSize: 14
                         }
                     }
                     Text {
                         text: '<b>发送人:</b> ' + username + '(' + department + ')'
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                     Text {
                         text: '<b>审批人:</b> ' + approver + '(' + department + ')'
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                     Text {
                         text: '<b>现场设备录入系统</b> '
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                     Text {
                         text: soft_name
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
 
                     Text {
                         text: '<b>机器序列码:</b> ' + serial_no
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                     Text {
                         text: '<b>激活码:</b> ' + activation_code
-                        font.pixelSize: 14
+                        font.pointSize: 14
                     }
                 }
 

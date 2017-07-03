@@ -202,7 +202,7 @@ Loader {
                 anchors.top: centralRectangle.bottom
                 anchors.topMargin: 30
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: 12
+                font.pointSize: 18
             }
         }
     }

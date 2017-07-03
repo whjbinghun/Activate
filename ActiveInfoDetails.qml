@@ -11,21 +11,17 @@ import "common_qml"
 
 Rectangle {
     id: avtive_info_details
+    anchors.fill: parent
 
-    width: n_width
-    height: n_height
-
-    property int n_width: 320
-    property int n_height: 580
-
-    property int gn_lab_height: 40
+    property int gn_single_height: parent.height/12
+    property int gn_lab_height: gn_single_height
 
     signal  sig_show_active_suc()
 
     Rectangle {
         id: rct_title
-        width: n_width
-        height: 40
+        width: parent.width
+        height: gn_single_height
 
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -37,7 +33,7 @@ Rectangle {
 
             Button {
                 //iconSource:
-                height: 40
+                height: gn_single_height
                 opacity: 0
 
                 onClicked: {
@@ -56,12 +52,13 @@ Rectangle {
 
 
     Column {
+        id: col_content
         anchors.top: rct_title.bottom
         anchors.topMargin: 5
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        spacing: 10
+        spacing: gn_single_height/5
 
         Column {
             Row {
@@ -217,15 +214,21 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 Label {
+                    id: lab_remarks
                     height: gn_lab_height
                     verticalAlignment: Text.AlignVCenter
                     text: "备注："
                 }
                 TextField {
                     id: text_remarks
-                    width: 200
+                    width: col_content.width - lab_remarks.width - 30
                     height: gn_lab_height
                     verticalAlignment: Text.AlignVCenter
+                    style: TextFieldStyle {
+                        background: Rectangle {
+                            border.width: 1
+                        }
+                    }
                 }
             }
 
@@ -241,7 +244,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 10
             width: parent.width - 20
-            height: 30
+            height: gn_single_height
             style: ButtonStyle {
                 label: Text {
                     horizontalAlignment: Text.AlignHCenter
@@ -251,7 +254,7 @@ Rectangle {
                 }
 
                 background: Rectangle {
-                    radius: 4
+                    radius: gn_single_height/5
                     gradient: Gradient {    //颜色渐变
                         GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
                         GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }

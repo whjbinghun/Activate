@@ -6,13 +6,9 @@ import QtQuick.Layouts 1.1
 
 Rectangle {
     id: avtive_info_details
+    anchors.fill: parent
 
-    width: n_width
-    height: n_height
-
-    property int n_width: 320
-    property int n_height: 580
-
+    property int gn_single_height: parent.height/12
     signal sig_see_active_info()
 
     Rectangle {
@@ -20,8 +16,8 @@ Rectangle {
         anchors.left: parent.left
         anchors.top: parent.top
 
-        width: n_width
-        height: 40
+        width: parent.width
+        height: gn_single_height
 
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -33,7 +29,7 @@ Rectangle {
 
             Button {
                 //iconSource:
-                height: 40
+                height: gn_single_height
                 opacity: 0
 
                 onClicked: {
@@ -62,7 +58,7 @@ Rectangle {
 
         Rectangle {
             width: parent.width
-            height: 60
+            height: gn_single_height*2
             border.width: 1
             Image {
                 id: image_suc
@@ -87,7 +83,7 @@ Rectangle {
 
         Button {
             width: parent.width
-            height: 30
+            height: gn_single_height
             style: ButtonStyle {
                 label: Text {
                     horizontalAlignment: Text.AlignHCenter
@@ -97,7 +93,7 @@ Rectangle {
                 }
 
                 background: Rectangle {
-                    radius: 8
+                    radius: gn_single_height/5
                     gradient: Gradient {    //颜色渐变
                         GradientStop {position: 0.0; color: control.pressed?"#ccc":"#0099FF" }
                         GradientStop {position: 1.0; color: control.pressed?"#aaa":"#0099FF" }

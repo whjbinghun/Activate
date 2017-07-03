@@ -15,19 +15,18 @@ Window {
     title: qsTr( "激活码" )
     visible: false
     modality: Qt.WindowModal
-    property int n_width: 320
-    property int n_height: 580
 
-    width: n_width
-    height: n_height
+    width: Screen.desktopAvailableWidth
+    height: Screen.desktopAvailableHeight
 
+    property int gn_single_height: parent.height/12
     signal sig_show_wait_active_wnd()
 
     Rectangle {
         id: rct_title
 
-        width: n_width
-        height: 40
+        width: parent.width
+        height: gn_single_height
         border.width: 1
         gradient: Gradient {    //颜色渐变
             GradientStop {position: 0.0; color: "#0099FF" }
@@ -39,7 +38,7 @@ Window {
 
             Button {
                 //iconSource:
-                height: 40
+                height: gn_single_height
                 opacity: 0
 
                 onClicked: {
@@ -57,14 +56,14 @@ Window {
     Rectangle {
         id: rct_active_suc
         anchors.top: rct_title.bottom
-        height: 40
+        height: gn_single_height
         Row {
             Image {
 
             }
             Text {
                 text: qsTr( "生成激活码成功!" )
-                font.pixelSize: 20
+                font.pointSize: 20
             }
         }
     }
@@ -72,7 +71,7 @@ Window {
     Column {
         id: col_approver_info
         anchors.top: rct_active_suc.bottom
-        height: 60
+        height: gn_single_height*2
         spacing: 10
         Row {
             Text {
@@ -175,7 +174,7 @@ Window {
 
         ListView {
             anchors.fill: parent
-            anchors.topMargin: 40
+            anchors.topMargin: gn_single_height
             model: list_wait_active_info
             delegate: contactDelegate
             highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
